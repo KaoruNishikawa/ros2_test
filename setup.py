@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'publisher='+package_name+'.communication_test_pub:main',
-            'subscriber='+package_name+'.communication_test_sub:main',
+            'publisher='+package_name+'.delay_test_pub:main',
+            'subscriber='+package_name+'.delay_test_sub:main',
         ],
     },
 )
