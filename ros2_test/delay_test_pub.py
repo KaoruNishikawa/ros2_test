@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-node_name = "communication_test_pub"
+node_name = "delay_test_pub"
 
 import rclpy
 import time
@@ -10,7 +10,7 @@ class communication_test_pub(object):
 
     def __init__(self):
         self.node = rclpy.create_node(node_name)
-        self.my_pub = self.node.create_publisher(Float64, "/test/time", 1)
+        self.my_pub = self.node.create_publisher(Float64, "/test/delay", 1)
         timer_period = 1
         self.node.create_timer(timer_period, self.my_publisher)
 
