@@ -13,4 +13,13 @@ def generate_launch_description():
                 ]
             )
         )
+        nodes.append(
+            Node(
+                package='ros2_test',
+                node_executable='node_num_sub',
+                parameters=[
+                    {'node_num': i}
+                ]
+            )
+        )
     return LaunchDescription(nodes)
