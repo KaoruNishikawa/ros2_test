@@ -16,7 +16,7 @@ class communication_test_sub(object):
         current_time = float(time.time())
         send_time = float(timer.data)
         delta = current_time - send_time
-        with open(f"{os.environ['HOME']}/Documents/test_timer.txt", "a") as f:
+        with open(f"{os.environ['HOME']}/Documents/test_delay.txt", "a") as f:
             f.write(str(delta)+'\n')
 
 
