@@ -13,7 +13,7 @@ class communication_test_pub(object):
         self.node.declare_parameter('node_num')
         self.num = str(self.node.get_parameter('node_num').value)
         self.my_pub = self.node.create_publisher(Float64, "/test/node_num_"+self.num, 1)
-        timer_period = 1
+        timer_period = 0.1
         self.node.create_timer(timer_period, self.my_publisher)
 
     def my_publisher(self):
