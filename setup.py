@@ -22,6 +22,8 @@ setup(
         'console_scripts': [
             'publisher='+package_name+'.delay_test_pub:main',
             'subscriber='+package_name+'.delay_test_sub:main',
+            'node_num_pub='+package_name+'.node_num_test_pub:main',
+            'node_num_sub='+package_name+'.node_num_test_sub:main',
         ],
     },
 )

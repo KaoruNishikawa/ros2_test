@@ -5,7 +5,7 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='ros2_test',
-            node_executable='subscriber',
+            node_executable='node_num_sub',
             parameters=[
                 {'node_num': 1},
             ]
