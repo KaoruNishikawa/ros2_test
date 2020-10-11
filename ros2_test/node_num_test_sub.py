@@ -7,7 +7,8 @@ import time
 import os
 from std_msgs.msg import Float64
 
-class communication_test_sub(object):
+class node_num_test_sub(object):
+    
     def __init__(self):
         self.node = rclpy.create_node(node_name)
         self.node.declare_parameter('node_num')
@@ -24,7 +25,7 @@ class communication_test_sub(object):
 
 def main(args=None):
     rclpy.init(args=args)
-    subscriber = communication_test_sub()
+    subscriber = node_num_test_sub()
     rclpy.spin(subscriber.node)
 
     subscriber.node.destroy_node()
