@@ -22,9 +22,9 @@ class cpu_mem_checker(object):
             res_mem = ""
             res_cpu = ""
         with open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a") as f:
-            f.write(res_mem+'\n')
+            f.write(str(res_mem)+'\n')
         with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
-            f.write(res_cpu+'\n')
+            f.write(str(res_cpu)+'\n')
         return
 
 
