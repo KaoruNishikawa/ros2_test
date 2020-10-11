@@ -8,6 +8,7 @@ import os
 from std_msgs.msg import Float64
 
 class communication_test_sub(object):
+    
     def __init__(self):
         self.node = rclpy.create_node(node_name)
         subscriber = self.node.create_subscription(Float64, "/test/delay", self.sub_callback, 1)
