@@ -19,12 +19,12 @@ class cpu_mem_checker(object):
             res_mem = subprocess.check_output('top | grep cache')
             res_cpu = subprocess.check_output('top | grep Cpu')
         except:
-            res_mem = None
-            res_cpu = None
+            res_mem = ""
+            res_cpu = ""
         with open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a") as f:
-            f.write(res_mem)
+            f.write(res_mem+'\n')
         with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
-            f.write(res_cpu)
+            f.write(res_cpu+'\n')
         return
 
 
