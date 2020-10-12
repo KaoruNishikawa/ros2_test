@@ -22,21 +22,21 @@ class cpu_mem_checker(object):
             res1_mem = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
             res2_mem = subprocess.Popen(command_mem_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
             res_mem = res2.communicate()[0]
-            time.sleep(1)
-            command_cpu_1 = 'top -b -n1'
-            command_cpu_2 = 'grep Cpu'
-            res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
-            res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
-            res_cpu = res2.communicate()[0]
+            # time.sleep(1)
+            # command_cpu_1 = 'top -b -n1'
+            # command_cpu_2 = 'grep Cpu'
+            # res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
+            # res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
+            # res_cpu = res2.communicate()[0]
         except:
             res_mem = ""
-            res_cpu = ""
+            # res_cpu = ""
         with open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a") as f:
             f.write(str(res_mem)+'\n')
-        with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
-            f.write(str(res_cpu)+'\n')
+        # with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
+        #     f.write(str(res_cpu)+'\n')
         # test
-        self.node.get_logger().info('mem: %s\ncpu: %s' % (res_mem, res_cpu))
+        self.node.get_logger().info('mem: %s\ncpu: %s' % (res_mem, res_mem))
         return
 
 
