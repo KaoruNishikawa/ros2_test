@@ -20,9 +20,9 @@ class cpu_mem_checker(object):
             # res_cpu = subprocess.check_output('top | grep Cpu')
             command_mem_1 = 'top -b -n1'
             command_mem_2 = 'grep buff/cache'
-            res = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
-            res2 = subprocess.Popen(command_mem_2.split(" "), stdin=res.stdout, stdout=subprocess.PIPE)
-            res.stdout.close()
+            res = subprocess.call(command_mem_1.split(' '), stdout=subprocess.PIPE)
+            res2 = subprocess.call(command_mem_2.split(" "), stdin=res.stdout, stdout=subprocess.PIPE)
+            # res.stdout.close()
             res_mem = res2.communicate()[0]
             # proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # res_mem, stderr_data = proc.communicate()
