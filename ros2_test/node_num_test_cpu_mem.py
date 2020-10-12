@@ -34,7 +34,7 @@ class cpu_mem_checker(object):
         with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
             f.write(str(res_cpu)+'\n')
         # test
-        self.node.get_logger().info('mem: %s, err: %s' % (res_mem, res_cpu))
+        # self.node.get_logger().info('mem: %s, err: %s' % (res_mem, res_cpu))
         return
 
 
