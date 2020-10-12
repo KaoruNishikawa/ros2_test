@@ -5,29 +5,30 @@ node_name = "cpu_mem_checker"
 import rclpy
 import os
 import subprocess
-import time
 from std_msgs.msg import Float64
 
 class cpu_mem_checker(object):
 
     def __init__(self):
         self.node = rclpy.create_node(node_name)
-        timer_period = 2
+        timer_period = 1
         self.node.create_timer(timer_period, self.checker)
 
     def checker(self):
         try:
+            # res_mem = subprocess.check_output('top | grep cache')
+            # res_cpu = subprocess.check_output('top | grep Cpu')
             command_mem_1 = 'top -b -n1'
             command_mem_2 = 'grep buff/cache'
-            res1_mem = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
-            res2_mem = subprocess.Popen(command_mem_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
+            res = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
+            res2 = subprocess.Popen(command_mem_2.split(" "), stdin=res.stdout, stdout=subprocess.PIPE)
+            # res.stdout.close()
             res_mem = res2.communicate()[0]
-            # time.sleep(1)
-            # command_cpu_1 = 'top -b -n1'
-            # command_cpu_2 = 'grep Cpu'
-            # res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
-            # res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
-            # res_cpu = res2.communicate()[0]
+            # proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            # res_mem, stderr_data = proc.communicate()
+            # command_cpu = 'top -b | grep Cpu'
+            # proc = subprocess.Popen(command_cpu, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            # res_cpu, stderr_data = proc.communicate()
         except:
             res_mem = "error"
             # res_cpu = ""
@@ -36,7 +37,7 @@ class cpu_mem_checker(object):
         # with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
         #     f.write(str(res_cpu)+'\n')
         # test
-        self.node.get_logger().info('mem: %s, cpu: %s' % (res_mem, res_mem))
+        self.node.get_logger().info('mem: %s, err: %s' % (res_mem, res_mem))
         return
 
 
