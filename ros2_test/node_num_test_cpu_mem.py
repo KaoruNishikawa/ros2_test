@@ -5,13 +5,14 @@ node_name = "cpu_mem_checker"
 import rclpy
 import os
 import subprocess
+import time
 from std_msgs.msg import Float64
 
 class cpu_mem_checker(object):
 
     def __init__(self):
         self.node = rclpy.create_node(node_name)
-        timer_period = 1
+        timer_period = 2
         self.node.create_timer(timer_period, self.checker)
 
     def checker(self):
@@ -21,6 +22,7 @@ class cpu_mem_checker(object):
             res1_mem = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
             res2_mem = subprocess.Popen(command_mem_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
             res_mem = res2.communicate()[0]
+            time.sleep(1)
             command_cpu_1 = 'top -b -n1'
             command_cpu_2 = 'grep Cpu'
             res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
