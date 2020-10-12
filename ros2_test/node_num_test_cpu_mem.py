@@ -21,7 +21,7 @@ class cpu_mem_checker(object):
             command_mem = 'top -b | grep buff/cache'
             proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             res_mem, stderr_data = proc.communicate()
-            command_cpu = 'top | grep Cpu'
+            command_cpu = 'top -b | grep Cpu'
             proc = subprocess.Popen(command_cpu, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             res_cpu, stderr_data = proc.communicate()
         except:
