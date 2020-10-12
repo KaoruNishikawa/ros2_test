@@ -18,7 +18,7 @@ class cpu_mem_checker(object):
         try:
             # res_mem = subprocess.check_output('top | grep cache')
             # res_cpu = subprocess.check_output('top | grep Cpu')
-            command_mem_1 = 'top -b'
+            command_mem_1 = 'top -n1'
             command_mem_2 = 'grep buff/cache'
             res = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
             res2 = subprocess.Popen(command_mem_2.split(" "), stdin=res.stdout, stdout=subprocess.PIPE)
