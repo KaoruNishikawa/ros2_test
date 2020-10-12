@@ -16,8 +16,14 @@ class cpu_mem_checker(object):
 
     def checker(self):
         try:
-            res_mem = subprocess.check_output('top | grep cache')
-            res_cpu = subprocess.check_output('top | grep Cpu')
+            # res_mem = subprocess.check_output('top | grep cache')
+            # res_cpu = subprocess.check_output('top | grep Cpu')
+            command_mem = 'top | grep cache'
+            proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            res_mem, stderr_data = proc.communicate()
+            command_cpu = 'top | grep cache'
+            proc = subprocess.Popen(command_cpu, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            res_cpu, stderr_data = proc.communicate()
         except:
             res_mem = ""
             res_cpu = ""
@@ -25,6 +31,8 @@ class cpu_mem_checker(object):
             f.write(str(res_mem)+'\n')
         with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
             f.write(str(res_cpu)+'\n')
+        # test
+        self.node.get_logger().info('mem: %s, cpu: %s' % (res_mem, res_cpu))
         return
 
 
