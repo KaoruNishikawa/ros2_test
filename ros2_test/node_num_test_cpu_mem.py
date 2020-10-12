@@ -29,14 +29,14 @@ class cpu_mem_checker(object):
             # res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res.stdout, stdout=subprocess.PIPE)
             # res_cpu = res2.communicate()[0]
         except:
-            res_mem = ""
+            res_mem = "error"
             # res_cpu = ""
         with open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a") as f:
             f.write(str(res_mem)+'\n')
         # with open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a") as f:
         #     f.write(str(res_cpu)+'\n')
         # test
-        self.node.get_logger().info('mem: %s\ncpu: %s' % (res_mem, res_mem))
+        self.node.get_logger().info('mem: %s, cpu: %s' % (res_mem, res_mem))
         return
 
 
