@@ -21,14 +21,16 @@ class cpu_mem_checker(object):
             command_mem_1 = 'top -b'
             command_mem_2 = 'grep buff/cache'
             res = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
-            res_mem = subprocess.check_output(command_mem_2.split(" "), stdin=res.stdout)
+            res2 = subprocess.Popen(command_mem_2.split(" "), stdin=res.stdout, stdout=subprocess.PIPE)
+            res.stdout.close()
+            res_mem = res2.communicate()[0]
             # proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # res_mem, stderr_data = proc.communicate()
             # command_cpu = 'top -b | grep Cpu'
             # proc = subprocess.Popen(command_cpu, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             # res_cpu, stderr_data = proc.communicate()
         except:
-            res_mem = ""
+            res_mem = "error"
             # res_cpu = ""
         with open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a") as f:
             f.write(str(res_mem)+'\n')
