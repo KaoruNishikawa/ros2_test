@@ -18,10 +18,10 @@ class cpu_mem_checker(object):
         try:
             # res_mem = subprocess.check_output('top | grep cache')
             # res_cpu = subprocess.check_output('top | grep Cpu')
-            command_mem = 'top | grep cache'
+            command_mem = 'top -b | grep buff/cache'
             proc = subprocess.Popen(command_mem, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             res_mem, stderr_data = proc.communicate()
-            command_cpu = 'top | grep cache'
+            command_cpu = 'top | grep Cpu'
             proc = subprocess.Popen(command_cpu, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             res_cpu, stderr_data = proc.communicate()
         except:
