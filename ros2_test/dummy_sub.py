@@ -5,6 +5,7 @@ node_name = "cpu_mem_checker"
 import rclpy
 import os
 import subprocess
+import time
 from std_msgs.msg import Float64
 
 class node_num_test_sub(object):
