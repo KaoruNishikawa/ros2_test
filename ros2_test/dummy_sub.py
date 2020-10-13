@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 
-node_name = "cpu_mem_checker"
+node_name = "delay_test_sub"
 
 import rclpy
-import os
-import subprocess
 import time
+import os
 from std_msgs.msg import Float64
 
 class node_num_test_sub(object):
-
+    
     def __init__(self):
         self.node = rclpy.create_node(node_name)
         self.node.declare_parameter('node_num')
@@ -37,3 +36,4 @@ def main(args=None):
 
 if __name__ == "__main__":
     main()
+
