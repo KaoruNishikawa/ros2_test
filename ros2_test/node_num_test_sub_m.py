@@ -13,8 +13,8 @@ class node_num_test_sub(object):
         self.node = rclpy.create_node(node_name)
         self.node.declare_parameter('node_num')
         self.num = str(self.node.get_parameter('node_num').value)
-        with open(f"{os.environ['HOME']}/Documents/node_num_test/test_node_num_{self.num}.txt", "a") as self.f:
-            subscriber = self.node.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, 1)
+        self.f = open(f"{os.environ['HOME']}/Documents/node_num_test/test_node_num_{self.num}.txt", "a")
+        subscriber = self.node.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, 1)
 
     def sub_callback(self, timer):
         current_time = float(time.time())
