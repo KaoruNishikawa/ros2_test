@@ -33,7 +33,7 @@ def generate_launch_description():
             package='ros2_test',
             node_executable='node_num_sub_m',
             parameters=[
-                {'node_num': 0}
+                {'node_num': 999}
             ]
         )
     )
