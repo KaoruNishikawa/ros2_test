@@ -9,7 +9,7 @@ def generate_launch_description():
                 package='ros2_test',
                 node_executable='node_num_pub',
                 parameters=[
-                    {'node_num': i+1}
+                    {'node_num': i}
                 ]
             )
         )
@@ -18,7 +18,7 @@ def generate_launch_description():
                 package='ros2_test',
                 node_executable='dummy_sub',
                 parameters=[
-                    {'node_num': i+1}
+                    {'node_num': i}
                 ]
             )
         )
