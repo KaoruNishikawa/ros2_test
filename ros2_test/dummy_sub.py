@@ -7,7 +7,7 @@ import os
 import subprocess
 from std_msgs.msg import Float64
 
-class cpu_mem_checker(object):
+class node_num_test_sub(object):
 
     def __init__(self):
         self.node = rclpy.create_node(node_name)
