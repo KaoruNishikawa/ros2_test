@@ -22,7 +22,7 @@ class node_num_test_sub(object):
         delta = current_time - send_time
         self.f.write(str(delta)+'\n')
         # test
-        self.node.get_logger().info('write')
+        # self.node.get_logger().info('write')
 
 
 def main(args=None):
