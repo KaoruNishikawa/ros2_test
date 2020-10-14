@@ -27,6 +27,9 @@ setup(
             'mem_cpu_checker='+package_name+'.node_num_test_cpu_mem:main',
             'node_num_sub_m='+package_name+'.node_num_test_sub_m:main',
             'dummy_sub='+package_name+'.dummy_sub:main',
+            'dummy_node='+package_name+'.dummy_node:main',
+            'topic_num_pub='+package_name+'.topic_num_test_pub:main',
+            'topic_num_sub='+package_name+'.topic_num_test_sub:main',
         ],
     },
 )
