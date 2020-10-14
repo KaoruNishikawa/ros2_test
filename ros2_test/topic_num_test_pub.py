@@ -25,6 +25,7 @@ class topic_num_test_pub(object):
         for number in self.num_list:
             self.pub[number].publish(msg)
 
+
 def main(args=None):
     rclpy.init(args=args)
     topic_pub = topic_num_test_pub()
