@@ -14,7 +14,7 @@ class topic_num_test_pub(object):
         self.num = int(self.node.get_parameter('node_num').value)
         self.num_list = [str(num) for num in range(self.num)]
         self.pub = {}
-        for number in num_list:
+        for number in self.num_list:
             self.pub[number] = self.node.create_publisher(Float64, "/test/topic_num_"+number, 1)
         timer_period = 0.1
         self.node.create_timer(timer_period, self.pub_data)
