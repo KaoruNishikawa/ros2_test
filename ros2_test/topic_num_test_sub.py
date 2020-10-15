@@ -14,7 +14,7 @@ class topic_num_test_sub(object):
         self.num = int(self.node.get_parameter('node_num').value)
         self.num_list = [str(num) for num in range(self.num)]
         sub = {}
-        for number in num_list:
+        for number in self.num_list:
             sub[number] = self.node.create_subscription(Float64, "/test/topic_num_"+number, self.callback, 1)
         
     def callback(self, timer):
