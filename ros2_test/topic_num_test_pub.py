@@ -4,7 +4,7 @@ node_name = "topic_num_test_pub"
 
 import rclpy
 import time
-import std_msgs.msg import Float64
+from std_msgs.msg import Float64
 
 class topic_num_test_pub(object):
 
