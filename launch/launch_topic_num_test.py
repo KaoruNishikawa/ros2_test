@@ -30,9 +30,9 @@ def generate_launch_description():
     )
     nodes.append(
         Node(
-            packages='ros2_test',
+            package='ros2_test',
             node_executable='node_num_pub',
-            parameter=[
+            parameters=[
                 {'node_num': 0}
             ]
         )
@@ -41,7 +41,7 @@ def generate_launch_description():
         Node(
             package='ros2_test',
             node_executable='node_num_sub_m',
-            parameter=[
+            parameters=[
                 {'node_num': 0}
             ]
         )
