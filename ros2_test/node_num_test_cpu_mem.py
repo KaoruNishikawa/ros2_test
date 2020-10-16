@@ -12,8 +12,8 @@ class cpu_mem_checker(object):
     def __init__(self):
         self.node = rclpy.create_node(node_name)
         timer_period = 1
-        self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "a")
-        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "a")
+        self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "w")
+        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "w")
         self.node.create_timer(timer_period, self.checker)
 
     def checker(self):
