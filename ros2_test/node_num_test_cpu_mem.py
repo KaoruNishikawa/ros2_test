@@ -23,10 +23,11 @@ class cpu_mem_checker(object):
             res1_mem = subprocess.Popen(command_mem_1.split(' '), stdout=subprocess.PIPE)
             res2_mem = subprocess.Popen(command_mem_2.split(' '), stdin=res1_mem.stdout, stdout=subprocess.PIPE)
             res_mem = res2_mem.communicate()[0]
-            command_cpu_1 = 'top -b -n1'
+            # command_cpu_1 = 'top -b -n1'
             command_cpu_2 = 'grep Cpu'
-            res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
-            res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res1_cpu.stdout, stdout=subprocess.PIPE)
+            # res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
+            # res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res1_cpu.stdout, stdout=subprocess.PIPE)
+            res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res1_mem.stdout, stdout=subprocess.PIPE)
             res_cpu = res2_cpu.communicate()[0]
         except:
             res_mem = ""
