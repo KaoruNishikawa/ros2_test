@@ -11,7 +11,7 @@ class cpu_mem_checker(object):
 
     def __init__(self):
         self.node = rclpy.create_node(node_name)
-        timer_period = 2
+        timer_period = 1
         self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "w")
         self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "w")
         self.node.create_timer(timer_period, self.checker)
@@ -20,15 +20,13 @@ class cpu_mem_checker(object):
         try:
             top_command = 'top -b -n1'
             command_mem = 'grep buff/cache'
-            res_top = subprocess.Popen(top_command.split(' '), stdout=subprocess.PIPE)
-            res_mem = subprocess.Popen(command_mem.split(' '), stdin=res_top.stdout, stdout=subprocess.PIPE)
-            res_mem = res_mem.communicate()[0]
-            # command_cpu_1 = 'top -b -n1'
+            res_mem1 = subprocess.Popen(top_command.split(' '), stdout=subprocess.PIPE)
+            res_mem2 = subprocess.Popen(command_mem.split(' '), stdin=res_mem1.stdout, stdout=subprocess.PIPE)
+            res_mem = res_mem2.communicate()[0]
             command_cpu = 'grep Cpu'
-            # res1_cpu = subprocess.Popen(command_cpu_1.split(' '), stdout=subprocess.PIPE)
-            # res2_cpu = subprocess.Popen(command_cpu_2.split(' '), stdin=res1_cpu.stdout, stdout=subprocess.PIPE)
-            res_cpu = subprocess.Popen(command_cpu.split(' '), stdin=res_top.stdout, stdout=subprocess.PIPE)
-            res_cpu = res_cpu.communicate()[0]
+            res_cpu1 = subprocess.Popen(top_command.split(' '), stdout=subprocess.PIPE)
+            res_cpu2 = subprocess.Popen(command_cpu.split(' '), stdin=res_cpu1.stdout, stdout=subprocess.PIPE)
+            res_cpu = res_cpu2.communicate()[0]
         except:
             res_mem = ""
             res_cpu = ""
