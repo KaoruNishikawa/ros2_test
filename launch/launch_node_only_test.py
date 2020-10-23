@@ -2,9 +2,9 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    nodes = []
+    ld = LaunchDescription()
     for i in range(5):
-        nodes.append(
+        ld.add_action(
             Node(
                 package='ros2_test',
                 node_executable='dummy_node',
@@ -13,13 +13,13 @@ def generate_launch_description():
                 ]
             )
         )
-    nodes.append(
+    ld.add_action(
         Node(
             package='ros2_test',
             node_executable='mem_cpu_checker',
         )
     )
-    nodes.append(
+    ld.add_action(
         Node(
             package='ros2_test',
             node_executable='node_num_pub',
@@ -28,7 +28,7 @@ def generate_launch_description():
             ]
         )
     )
-    nodes.append(
+    ld.add_action(
         Node(
             package='ros2_test',
             node_executable='node_num_sub_m',
@@ -37,4 +37,4 @@ def generate_launch_description():
             ]
         )
     )
-    return LaunchDescription(nodes)
+    return ld
