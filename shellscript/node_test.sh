@@ -20,7 +20,7 @@ do
     # echo start testing with $node_num node\(s\)
     sed -i "s/for.*/for i in range\($node_num\)\:/" $launch_file
     sleep 1s
-    timeout 100s ros2 launch $launch_file
+    timeout -s SIGINT 100s ros2 launch $launch_file
     sleep 30s
     cd ~/Documents
     mv -i cpu_used.txt cpu_used_$i.txt
