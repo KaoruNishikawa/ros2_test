@@ -10,17 +10,20 @@ colcon build --symlink-install
 
 # launch
 cd src/ros2_test/launch
+sleep 5
 
 # 
-node_num = 1
+node_num=1
 echo start testing with $node_num node\(s\)
 sed "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
 (sleep 100; kill $$)&
 ros2 launch $launch_file
+sleep 10
 
 # 
-node_num = 20
+node_num=20
 echo start testing with $node_num node\(s\)
 sed "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
 (sleep 100; kill $$)&
 ros2 launch $launch_file
+sleep 10
