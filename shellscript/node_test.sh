@@ -16,14 +16,15 @@ sleep 5
 node_num=1
 echo start testing with $node_num node\(s\)
 sed "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
-(sleep 100; kill $$)&
-ros2 launch $launch_file
-sleep 10
+timeout 100s ros2 launch $launch_file
+sleep 15
 
 # 
 node_num=20
 echo start testing with $node_num node\(s\)
 sed "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
-(sleep 100; kill $$)&
-ros2 launch $launch_file
-sleep 10
+timeout 100s ros2 launch $launch_file
+sleep 15
+
+# back to initial directory
+cd ./../shellscript
