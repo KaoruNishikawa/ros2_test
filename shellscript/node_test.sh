@@ -20,7 +20,7 @@ ros2 launch $launch_file
 
 # 
 node_num = 20
-echo start testing with $node_num node(s)
+echo start testing with $node_num node\(s\)
 sed "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
 (sleep 100; kill $$)&
 ros2 launch $launch_file
