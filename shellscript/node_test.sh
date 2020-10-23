@@ -15,7 +15,7 @@ sleep 5s
 # 
 node_num=1
 echo start testing with $node_num node\(s\)
-sed -i "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
+sed -i "s/\sfor.*/\tfor i in range\($node_num\)\:/" $launch_file
 sleep 1s
 timeout 100s ros2 launch $launch_file
 sleep 15s
@@ -23,7 +23,7 @@ sleep 15s
 # 
 node_num=20
 echo start testing with $node_num node\(s\)
-sed -i "s/\sfor.*/for i in range\($node_num\)\:/" $launch_file
+sed -i "s/\sfor.*/\tfor i in range\($node_num\)\:/" $launch_file
 sleep 1s
 timeout 100s ros2 launch $launch_file
 sleep 15s
