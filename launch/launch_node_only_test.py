@@ -16,7 +16,13 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
-            node_executable='mem_cpu_checker',
+            node_executable='mem_checker',
+        )
+    )
+    ld.add_action(
+        Node(
+            package='ros2_test',
+            node_executable='cpu_checker',
         )
     )
     ld.add_action(

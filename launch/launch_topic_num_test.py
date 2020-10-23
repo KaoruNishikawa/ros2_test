@@ -25,7 +25,13 @@ def generate_launch_description():
     nodes.append(
         Node(
             package='ros2_test',
-            node_executable='mem_cpu_checker',
+            node_executable='mem_checker',
+        )
+    )
+    nodes.append(
+        Node(
+            package='ros2_test',
+            node_executable='cpu_checker',
         )
     )
     nodes.append(
