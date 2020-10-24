@@ -12,23 +12,34 @@ cd ~/ros2
 # launch
 cd src/ros2_test/launch
 sleep 1s
-
 # 
-for i in 1 20 40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400
+for node_num in 1 20 40 60 80 100 120 140 160 180 200 220 240 260 280 300 320 340 360 380 400
 do
-    node_num=$i
+    # node_num=$i
     # echo start testing with $node_num node\(s\)
     sed -i "s/for.*/for i in range\($node_num\)\:/" $launch_file
     sleep 1s
     timeout -s SIGINT 100s ros2 launch $launch_file
     sleep 30s
     cd ~/Documents
-    mv -i cpu_used.txt cpu_used_$i.txt
-    mv -i mem_used.txt mem_used_$i.txt
-    mv -i test_node_num_0.txt delay_${i}_node.txt
+    mv -i cpu_used.txt cpu_used_$node_num.txt && :
+    mv -i mem_used.txt mem_used_$node_num.txt && :
+    mv -i test_node_num_0.txt delay_${node_num}_node.txt && :
     cd ~/ros2/src/ros2_test/launch
     sleep 5s
 done
+
+# clean
+cd ~/Documents
+dirname=result_$(date "+%Y%m%d_%H%M%S")
+mkdir -p $dirname/data
+mv cpu_used_* ./$dirname/data/
+mv mem_used_* ./$dirname/data/
+mv delay_* ./$dirname/data/
+
+# record settings
+cp ~/ros2/src/ros2_test/shellscript/node_test.sh ./$dirname/
+cp ~/ros2/src/ros2_test/launch/$launch_file ./$dirname/
 
 # back to initial directory
 cd ../shellscript
