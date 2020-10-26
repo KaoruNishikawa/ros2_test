@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-node_name = "delay_test_sub"
+node_name = "dummy_sub"
 
 import rclpy
 import time
 import os
 from std_msgs.msg import Float64
 
-class node_num_test_sub(object):
+class dummy_node_sub(object):
     
     def __init__(self):
         self.node = rclpy.create_node(node_name)
@@ -27,7 +27,7 @@ class node_num_test_sub(object):
 
 def main(args=None):
     rclpy.init(args=args)
-    subscriber = node_num_test_sub()
+    subscriber = dummy_node_sub()
     rclpy.spin(subscriber.node)
 
     subscriber.node.destroy_node()
