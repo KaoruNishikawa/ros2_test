@@ -39,6 +39,11 @@ mv delay_* ./$dirname/data/
 # record settings
 cp ~/ros2/src/ros2_test/shellscript/node_test.sh ./$dirname/
 cp ~/ros2/src/ros2_test/launch/$launch_file ./$dirname/
+mkdir ./$dirname/scripts
+cp -r ~/ros2/src/ros2_test/ros2_test/* ./$dirname/scripts/
+cp ~/ros2/src/ros2_test/setup.py ./$dirname/
+cp ~/ros2/src/ros2_test/package.xml ./$dirname/
+
 
 # back to initial directory
 cd ../shellscript
