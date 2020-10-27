@@ -14,7 +14,8 @@ class node_num_test_sub(object):
         self.node.declare_parameter('node_num')
         self.num = str(self.node.get_parameter('node_num').value)
         self.f = open(f"{os.environ['HOME']}/Documents/test_node_num_{self.num}.txt", "w")
-        subscriber = self.node.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, 1)
+        qos = rclpy.qos.QoSProfile(depth=1)
+        subscriber = self.node.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, qos)
 
     def sub_callback(self, timer):
         current_time = float(time.time())
