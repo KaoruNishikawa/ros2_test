@@ -13,9 +13,10 @@ class topic_num_test_sub(object):
         self.node.declare_parameter('node_num')
         self.num = int(self.node.get_parameter('node_num').value)
         self.num_list = [str(num) for num in range(self.num)]
+        qos = rclpy.qos.QoSProfile(depth=1)
         sub = {}
         for number in self.num_list:
-            sub[number] = self.node.create_subscription(Float64, "/test/topic_num_"+number, self.callback, 1)
+            sub[number] = self.node.create_subscription(Float64, "/test/topic_num_"+number, self.callback, qos)
         
     def callback(self, timer):
         curr_time = float(time.time())

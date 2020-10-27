@@ -13,9 +13,10 @@ class topic_num_test_pub(object):
         self.node.declare_parameter('node_num')
         self.num = int(self.node.get_parameter('node_num').value)
         self.num_list = [str(num) for num in range(self.num)]
+        qos = rclpy.qos.QoSProfile(depth=1)
         self.pub = {}
         for number in self.num_list:
-            self.pub[number] = self.node.create_publisher(Float64, "/test/topic_num_"+number, 1)
+            self.pub[number] = self.node.create_publisher(Float64, "/test/topic_num_"+number, qos)
         timer_period = 0.1
         self.node.create_timer(timer_period, self.pub_data)
 
