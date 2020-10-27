@@ -3,17 +3,19 @@
 node_name = "mem_checker"
 
 import rclpy
+from rclpy.node import Node
 import os
 import subprocess
 from std_msgs.msg import Float64
 
-class mem_checker(object):
+class mem_checker(Node):
 
     def __init__(self):
-        self.node = rclpy.create_node(node_name)
+        super().__init__(node_name)
+        # self.node = rclpy.create_node(node_name)
         timer_period = 1
         self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "w")
-        self.node.create_timer(timer_period, self.checker)
+        self.create_timer(timer_period, self.checker)
 
     def checker(self):
         try:
@@ -33,9 +35,9 @@ class mem_checker(object):
 def main(args=None):
     rclpy.init(args=args)
     checker = mem_checker()
-    rclpy.spin(checker.node)
+    rclpy.spin(checker)
 
-    checker.node.destroy_node()
+    checker.destroy_node()
     rclpy.shutdown()
 
 
