@@ -7,7 +7,7 @@ def generate_launch_description():
         ld.add_action(
             Node(
                 package='ros2_test',
-                node_executable='dummy_node',
+                executable='dummy_node',
                 parameters=[
                     {'node_num': i}
                 ]
@@ -16,19 +16,19 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
-            node_executable='mem_checker',
+            executable='mem_checker',
         )
     )
     ld.add_action(
         Node(
             package='ros2_test',
-            node_executable='cpu_checker',
+            executable='cpu_checker',
         )
     )
     ld.add_action(
         Node(
             package='ros2_test',
-            node_executable='node_num_pub',
+            executable='node_num_pub',
             parameters=[
                 {'node_num': 0}
             ]
@@ -37,7 +37,7 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
-            node_executable='node_num_sub_m',
+            executable='node_num_sub_m',
             parameters=[
                 {'node_num': 0}
             ]
