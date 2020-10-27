@@ -3,19 +3,21 @@
 node_name = "dummy_sub"
 
 import rclpy
+from rclpy.node import Node
 import time
 import os
 from std_msgs.msg import Float64
 
-class dummy_node_sub(object):
+class dummy_node_sub(Node):
     
     def __init__(self):
-        self.node = rclpy.create_node(node_name)
-        self.node.declare_parameter('node_num')
+        super().__init__(node_name)
+        # self.node = rclpy.create_node(node_name)
+        self.declare_parameter('node_num')
         self.num = str(self.node.get_parameter('node_num').value)
         # self.f = open(f"{os.environ['HOME']}/Documents/node_num_test/test_node_num_{self.num}.txt", "a")
         qos = rclpy.qos.QoSProfile(depth=1)
-        subscriber = self.node.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, qos)
+        subscriber = self.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, qos)
 
     def sub_callback(self, timer):
         current_time = float(time.time())
@@ -29,9 +31,9 @@ class dummy_node_sub(object):
 def main(args=None):
     rclpy.init(args=args)
     subscriber = dummy_node_sub()
-    rclpy.spin(subscriber.node)
+    rclpy.spin(subscriber)
 
-    subscriber.node.destroy_node()
+    subscriber.destroy_node()
     rclpy.shutdown()
 
 

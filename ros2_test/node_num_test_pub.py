@@ -3,19 +3,21 @@
 node_name = "delay_test_pub"
 
 import rclpy
+from rclpy.node import Node
 import time
 from std_msgs.msg import Float64
 
-class node_num_test_pub(object):
+class node_num_test_pub(Node):
 
     def __init__(self):
-        self.node = rclpy.create_node(node_name)
-        self.node.declare_parameter('node_num')
-        self.num = str(self.node.get_parameter('node_num').value)
+        super().__init__(node_name)
+        # self.node = rclpy.create_node(node_name)
+        self.declare_parameter('node_num')
+        self.num = str(self.get_parameter('node_num').value)
         qos = rclpy.qos.QoSProfile(depth=1)
-        self.my_pub = self.node.create_publisher(Float64, "/test/node_num_"+self.num, qos)
+        self.my_pub = self.create_publisher(Float64, "/test/node_num_"+self.num, qos)
         timer_period = 0.1
-        self.node.create_timer(timer_period, self.my_publisher)
+        self.create_timer(timer_period, self.my_publisher)
 
     def my_publisher(self):
         msg = Float64()
@@ -26,9 +28,9 @@ class node_num_test_pub(object):
 def main(args=None):
     rclpy.init(args=args)
     pub = node_num_test_pub()
-    rclpy.spin(pub.node)
+    rclpy.spin(pub)
 
-    pub.node.destroy_node()
+    pub.destroy_node()
     rclpy.shutdown()
 
 

@@ -3,20 +3,22 @@
 node_name = "topic_num_test_sub"
 
 import rclpy
+from rclpy.node import Node
 import time
 from std_msgs.msg import Float64
 
-class topic_num_test_sub(object):
+class topic_num_test_sub(Node):
 
     def __init__(self):
-        self.node = rclpy.create_node(node_name)
-        self.node.declare_parameter('node_num')
-        self.num = int(self.node.get_parameter('node_num').value)
+        super().__init__(node_name)
+        # self.node = rclpy.create_node(node_name)
+        self.declare_parameter('node_num')
+        self.num = int(self.get_parameter('node_num').value)
         self.num_list = [str(num) for num in range(self.num)]
         qos = rclpy.qos.QoSProfile(depth=1)
         sub = {}
         for number in self.num_list:
-            sub[number] = self.node.create_subscription(Float64, "/test/topic_num_"+number, self.callback, qos)
+            sub[number] = self.create_subscription(Float64, "/test/topic_num_"+number, self.callback, qos)
         
     def callback(self, timer):
         curr_time = float(time.time())
@@ -27,9 +29,9 @@ class topic_num_test_sub(object):
 def main(args=None):
     rclpy.init(args=args)
     topic_sub = topic_num_test_sub()
-    rclpy.spin(topic_sub.node)
+    rclpy.spin(topic_sub)
 
-    topic_sub.node.destroy_node()
+    topic_sub.destroy_node()
     rclpy.shutdown()
 
 
