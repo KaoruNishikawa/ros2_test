@@ -22,7 +22,7 @@ class net_checker(Node):
             res_net = psutil.virtual_memory()
         except:
             res_net = ""
-        self.f_net.write(str(res_mem)+'\n')
+        self.f_net.write(str(res_net)+'\n')
         return
 
 
