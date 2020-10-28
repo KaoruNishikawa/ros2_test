@@ -23,6 +23,7 @@ do
     node_num=`printf "%03g" $node_num`
     mv -i cpu_used.txt cpu_used_$node_num.txt && :
     mv -i mem_used.txt mem_used_$node_num.txt && :
+    mv -i net_count.txt net_count_$node_num.txt && :
     mv -i test_node_num_0.txt delay_${node_num}_node.txt && :
     cd ~/ros2/src/ros2_test/launch
     sleep 5s
@@ -34,6 +35,7 @@ dirname=result_$(date "+%Y%m%d_%H%M%S")
 mkdir -p $dirname/data
 mv cpu_used_* ./$dirname/data/
 mv mem_used_* ./$dirname/data/
+mv net_count_* ./$dirname/data/
 mv delay_* ./$dirname/data/
 
 # record settings
