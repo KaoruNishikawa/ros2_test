@@ -19,7 +19,7 @@ class net_checker(Node):
 
     def checker(self):
         try:
-            res_net = psutil.virtual_memory()
+            res_net = psutil.net_io_counters()
         except:
             res_net = ""
         self.f_net.write(str(res_net)+'\n')
