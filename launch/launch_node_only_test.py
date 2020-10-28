@@ -31,6 +31,13 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
+            executable='net_checker',
+            name='net_checker',
+        )
+    )
+    ld.add_action(
+        Node(
+            package='ros2_test',
             executable='node_num_pub',
             name='delay_pub',
             parameters=[
