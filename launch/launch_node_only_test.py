@@ -9,9 +9,9 @@ def generate_launch_description():
                 package='ros2_test',
                 executable='dummy_node',
                 name='dummy_node'+str(i),
-                parameters=[
-                    {'node_num': i}
-                ]
+                # parameters=[
+                #     {'node_num': i}
+                # ]
             )
         )
     ld.add_action(

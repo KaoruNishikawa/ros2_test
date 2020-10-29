@@ -12,9 +12,8 @@ class dummy_node(Node):
     def __init__(self):
         super().__init__(node_name)
         # self.node = rclpy.create_node(node_name)
-        self.declare_parameter('node_num')
-        self.num = str(self.get_parameter('node_num').value)
-        
+
+
 def main(args=None):
     rclpy.init(args=args)
     dummy = dummy_node()
@@ -22,6 +21,7 @@ def main(args=None):
 
     dummy.destroy_node()
     rclpy.shutdown()
+
 
 if __name__ == "__main__":
     main()
