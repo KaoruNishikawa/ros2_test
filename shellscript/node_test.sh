@@ -45,7 +45,7 @@ mkdir ./$dirname/scripts
 cp -r ~/ros2/src/ros2_test/ros2_test/* ./$dirname/scripts/
 cp ~/ros2/src/ros2_test/setup.py ./$dirname/
 cp ~/ros2/src/ros2_test/package.xml ./$dirname/
-
+ros2 doctor --report >> ~/Documents/$dirname/ros2_configurations.txt
 
 # back to initial directory
 cd ../shellscript
