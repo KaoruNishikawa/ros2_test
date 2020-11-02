@@ -10,3 +10,4 @@ def generate_launch_description():
             name = "exec_recording_nodes_S",
         )
     )
+    return ld
