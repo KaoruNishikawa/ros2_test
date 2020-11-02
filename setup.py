@@ -32,6 +32,8 @@ setup(
             'dummy_node='+package_name+'.dummy_node:main',
             'topic_num_pub='+package_name+'.topic_num_test_pub:main',
             'topic_num_sub='+package_name+'.topic_num_test_sub:main',
+            'exec_recording_nodes_S='+package_name+'exec_recording_nodes_S:main',
+            'exec_recording_nodes_M='+package_name+'exec_recording_nodes_M:main',
         ],
     },
 )
