@@ -12,8 +12,8 @@ class topic_num_test_pub(Node):
     def __init__(self):
         super().__init__(node_name)
         # self.node = rclpy.create_node(node_name)
-        self.declare_parameter('node_num')
-        self.num = int(self.get_parameter('node_num').value)
+        self.declare_parameter('topic_num')
+        self.num = int(self.get_parameter('topic_num').value)
         self.num_list = [str(num) for num in range(self.num)]
         qos = rclpy.qos.QoSProfile(depth=1)
         self.pub = {}
