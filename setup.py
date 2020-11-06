@@ -36,6 +36,9 @@ setup(
             'exec_recording_nodes_M='+package_name+'.exec_recording_nodes_M:main',
             'exec_dummy_nodes='+package_name+'.exec_dummy_nodes:main',
             'dummy_node_exec='+package_name+'.dummy_node_exec:main',
+            'talker_exec='+package_name+'.talker_exec:main',
+            'listener_exec='+package_name+'.listener_exec:main',
+            'exec_pubsub_nodes='+package_name+'.exec_pubsub_nodes:main',
         ],
     },
 )
