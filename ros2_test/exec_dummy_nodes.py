@@ -11,7 +11,8 @@ def main(args=None):
     rclpy.init(args=args)
     try:
         param = [[Parameter("node_num", value=f"{i:02g}")] for i in range(20)]
-        nodes = [dummy_node(parameter_overrides = param[i]) for i in range(20)]
+        name = [f"dummy_node_{i:02g}" for i in range(20)]
+        nodes = [dummy_node(node_name_=name[i], parameter=param[i]) for i in range(20)]
 
         executor = SingleThreadedExecutor()
 
