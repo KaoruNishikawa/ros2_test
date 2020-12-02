@@ -14,7 +14,7 @@ class dummy_node_sub(Node):
         super().__init__(node_name)
         # self.node = rclpy.create_node(node_name)
         self.declare_parameter('node_num')
-        self.num = str(self.node.get_parameter('node_num').value)
+        self.num = str(self.get_parameter('node_num').value)
         # self.f = open(f"{os.environ['HOME']}/Documents/node_num_test/test_node_num_{self.num}.txt", "a")
         qos = rclpy.qos.QoSProfile(depth=1)
         subscriber = self.create_subscription(Float64, "/test/node_num_"+self.num, self.sub_callback, qos)
