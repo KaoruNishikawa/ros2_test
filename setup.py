@@ -39,6 +39,8 @@ setup(
             'talker_exec='+package_name+'.talker_exec:main',
             'listener_exec='+package_name+'.listener_exec:main',
             'exec_pubsub_nodes='+package_name+'.exec_pubsub_nodes:main',
+            'talker_executable='+package_name+'.talker_exec:main',
+            'exec_param_talker='+package_name+'.exec_param_talker:main',
         ],
     },
 )
