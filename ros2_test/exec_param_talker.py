@@ -10,12 +10,20 @@ from rclpy.parameter import Parameter
 def main(args=None):
     rclpy.init(args=args)
     try:
+        # talker = talker_exec(
+        #         parameter_overrides=[
+        #             Parameter("node_num", value=22),
+        #         ]
+        #     )
         talker = talker_exec(
-                parameter_overrides=[
-                    Parameter("node_num", value=22),
+                cli_args=[
+                    "--ros-args",
+                    "-r", "__node:=kore",
+                    "-r", "__ns:=/doko",
+                    "-p", "node_num:=39",
                 ]
             )
-        
+
         executor = SingleThreadedExecutor()
         executor.add_node(talker)
 
