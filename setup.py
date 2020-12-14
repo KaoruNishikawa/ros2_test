@@ -42,6 +42,10 @@ setup(
             'talker_executable='+package_name+'.talker_exec:main',
             'exec_param_talker='+package_name+'.exec_param_talker:main',
             'check_cpu='+package_name+'.check_cpu:main',
+            'check_mem='+package_name+'.check_mem:main',
+            'check_net='+package_name+'.check_net:main',
+            'check_temp='+package_name+'.check_temp:main',
+            'exec_checker='+package_name+'.exec_checker:main',
         ],
     },
 )
