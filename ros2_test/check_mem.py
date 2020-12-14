@@ -1,39 +1,41 @@
 #!/usr/bin/env python3
 
-node_name = "cpu_checker"
+node_name = "mem_checker"
 
 import os
+import re
 
 import psutil
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
 
-class cpu_checker(Node):
+class mem_checker(Node):
 
     def __init__(self):
         super().__init__(node_name)
         timer_period = 2
-        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "w")
+        self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
         try:
-            res_cpu = psutil.cpu_percent(interval=0.5, percpu=True)
-            res_cpu = " ".join([str(res) for res in res_cpu])
+            res_mem = str(psutil.virtual_memory())
+            res_mem = re.sub(r'.*\(', '', res_mem)
+            res_mem = re.sub(r'[,\)$]', '', res_mem)
         except:
-            res_cpu = ""
-        self.f_cpu.write(res_cpu+'\n')
+            res_mem = ""
+        self.f_mem.write(res_mem+'\n')
         return
 
 
 def main(args=None):
     rclpy.init(args=args)
     try:
-        checker = cpu_checker()
+        checker = mem_checker()
         rclpy.spin(checker)
     finally:
-        checker.f_cpu.close()
+        checker.f_mem.close()
         checker.destroy_node()
         rclpy.shutdown()
 
