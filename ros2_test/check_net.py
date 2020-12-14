@@ -1,39 +1,41 @@
 #!/usr/bin/env python3
 
-node_name = "cpu_checker"
+node_name = "net_checker"
 
 import os
+import re
 
 import psutil
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
 
-class cpu_checker(Node):
+class net_checker(Node):
 
     def __init__(self):
         super().__init__(node_name)
         timer_period = 2
-        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "w")
+        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
         try:
-            res_cpu = psutil.cpu_percent(interval=0.5, percpu=True)
-            res_cpu = " ".join([str(res) for res in res_cpu])
+            res_net = psutil.net_io_counters()
+            res_net = re.sub(r'.*?\(', '', str(res_net))
+            res_net = re.sub(r'[,\)]', '', res_net)
         except:
-            res_cpu = ""
-        self.f_cpu.write(res_cpu+'\n')
+            res_net = ""
+        self.f_net.write(str(res_net)+'\n')
         return
 
 
 def main(args=None):
     rclpy.init(args=args)
     try:
-        checker = cpu_checker()
+        checker = net_checker()
         rclpy.spin(checker)
     finally:
-        checker.f_cpu.close()
+        checker.f_net.close()
         checker.destroy_node()
         rclpy.shutdown()
 
