@@ -7,6 +7,9 @@ def generate_launch_description():
         Node(
             package = 'ros2_test',
             executable = 'exec_recording_nodes_S',
+            parameters = [{
+                'node_num': 997,
+            }]
         )
     )
     return ld

@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     ld = LaunchDescription()
-    for i in range(200):
+    for i in range(50):
         ld.add_action(
             Node(
                 package='ros2_test',
@@ -34,7 +34,7 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
-            executable='cpu_checker',
+            executable='check_cpu',
             name='cpu_checker',
         )
     )
