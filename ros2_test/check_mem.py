@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-node_name = "mem_checker"
-
 import os
 import re
 
@@ -9,6 +7,9 @@ import psutil
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
+
+node_name = "mem_checker"
+
 
 class mem_checker(Node):
 
