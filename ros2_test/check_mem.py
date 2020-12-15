@@ -16,7 +16,8 @@ class mem_checker(Node):
     def __init__(self):
         super().__init__(node_name)
         timer_period = 2
-        self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used.txt", "w")
+        self.num = int(self.declare_parameter('node_num').value)
+        self.f_mem = open(f"{os.environ['HOME']}/Documents/mem_used_{self.num:03d}.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):

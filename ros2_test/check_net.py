@@ -16,7 +16,8 @@ class net_checker(Node):
     def __init__(self):
         super().__init__(node_name)
         timer_period = 2
-        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count.txt", "w")
+        self.num = int(self.declare_parameter('node_num').value)
+        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count_{self.num:03d}.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):

@@ -46,6 +46,9 @@ setup(
             'check_net='+package_name+'.check_net:main',
             'check_temp='+package_name+'.check_temp:main',
             'exec_checker='+package_name+'.exec_checker:main',
+            'node_publish='+package_name+'.node_publish:main',
+            'node_subscribe='+package_name+'.node_subscribe:main',
+            'exec_node='+package_name+'.exec_node:main',
         ],
     },
 )

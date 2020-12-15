@@ -15,7 +15,8 @@ class cpu_checker(Node):
     def __init__(self):
         super().__init__(node_name)
         timer_period = 2
-        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used.txt", "w")
+        self.num = int(self.declare_parameter('node_num').value)
+        self.f_cpu = open(f"{os.environ['HOME']}/Documents/cpu_used_{self.num:03d}.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
