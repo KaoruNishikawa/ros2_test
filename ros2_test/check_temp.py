@@ -23,7 +23,7 @@ class temp_checker(Node):
         try:
             res_temp = psutil.sensors_temperatures()
             res_temp = str(res_temp["coretemp"])
-            res_temp = re.sub(r'[\[,\]]', '', res_temp)
+            res_temp = re.sub(r'[\(\)\[,\]]', '', res_temp)
             res_temp = re.sub(r'shwtemp', '\n', res_temp).split('\n')[1:]  # first elem is empty
         except:
             res_temp = []
