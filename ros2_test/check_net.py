@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-node_name = "net_checker"
-
 import os
 import re
 
@@ -9,6 +7,9 @@ import psutil
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
+
+node_name = "net_checker"
+
 
 class net_checker(Node):
 

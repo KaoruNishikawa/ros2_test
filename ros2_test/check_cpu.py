@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
-node_name = "cpu_checker"
-
 import os
 
 import psutil
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64
+
+node_name = "cpu_checker"
+
 
 class cpu_checker(Node):
 
