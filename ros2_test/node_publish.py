@@ -11,10 +11,10 @@ node_name = "node_publish"
 
 class node_publish(Node):
 
-    def __init__(self):
-        super().__init__(node_name)
-        node_num = self.declare_parameter('node_num').value
-        self.pub = self.create_publisher(Float64, "test", 1)
+    def __init__(self, **kwargs):
+        super().__init__(node_name, **kwargs)
+        self.num = int(self.declare_parameter('node_index_pub').value)
+        self.pub = self.create_publisher(Float64, f"test/num", 1)
         timer_period = 0.1
         self.create_timer(timer_period, self.talker)
 

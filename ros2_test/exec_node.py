@@ -9,10 +9,19 @@ from .node_subscribe import node_subscribe
 def main(args=None):
     rclpy.init(args=args)
     try:
-        nodes = {
-            'pub': node_publish(),
-            'sub': node_subscribe(),
-        }
+        nodes = {}
+        dev = 0
+        for i in range(20):
+            nodes[f'pub{i:03d}'] = node_publish(
+                cli_args=[
+                    "--ros-args",
+                    "-r", f"test/num:=test/no{i:03d}",
+                ]),
+            nodes[f'sub{i:03d}'] = node_subscribe(
+                cli_args=[
+                    "--ros-args",
+                    "-r", f"test/num:=test/no{i+dev:03d}",
+                ]),
 
         executor = SingleThreadedExecutor()
 
