@@ -15,9 +15,12 @@ class net_checker(Node):
 
     def __init__(self):
         super().__init__(node_name)
+        shift = int(self.declare_parameter('shift').value)
+        nodes_per_group = int(self.declare_parameter('nodes_per_group').value)
+        total_pairs = int(self.declare_parameter('total_pairs').value)
+        num_of_groups = int(total_pairs / nodes_per_group)
+        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.txt", "w")
         timer_period = 2
-        self.num = int(self.declare_parameter('node_num').value)
-        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count_{self.num:03d}.txt", "w")
         self.create_timer(timer_period, self.checker)
 
     def checker(self):

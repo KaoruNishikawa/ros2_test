@@ -9,7 +9,7 @@ from .check_mem import mem_checker
 from .check_net import net_checker
 from .check_temp import temp_checker
 from .node_publish import node_publish
-from .node_subscribe import node_subscribe
+from .node_subscribe_rec import node_subscribe_rec
 
 def main(args=None):
     rclpy.init(args=args)
@@ -21,7 +21,7 @@ def main(args=None):
             'net': net_checker(),
             'temp': temp_checker(),
             'pub': node_publish(),
-            'sub': node_subscribe(),
+            'sub': node_subscribe_rec(),
         }
 
         executor = MultiThreadedExecutor()
