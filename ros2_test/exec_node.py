@@ -10,18 +10,17 @@ def main(args=None):
     rclpy.init(args=args)
     try:
         nodes = {}
-        dev = 0
         for i in range(20):
             nodes[f'pub{i:03d}'] = node_publish(
                 cli_args=[
                     "--ros-args",
-                    "-r", f"test/num:=test/no{i:03d}",
-                ]),
+                    "-r", f"__node:=node_publish_{i:03d}",
+                ])
             nodes[f'sub{i:03d}'] = node_subscribe(
                 cli_args=[
                     "--ros-args",
-                    "-r", f"test/num:=test/no{i+dev:03d}",
-                ]),
+                    "-r", f"__node:=node_subscribe_{i:03d}",
+                ])
 
         executor = SingleThreadedExecutor()
 
@@ -38,3 +37,4 @@ def main(args=None):
 
 if __name__ == "__main__":
     main()
+
