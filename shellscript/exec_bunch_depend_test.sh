@@ -1,51 +1,47 @@
 #!/bin/sh
 
-# specify which file to launch
-launch_file=launch_exec_NODE.py
+# specify which file to launch #
+launch_file=exec_test.launch.py
+node_executor=exec_node.py
+################################
+######## configuration #########
+################################
+topic_num=120
+group_num=xx
+################################
 
-# build
-cd ~/ros2
-# colcon build --symlink-install
-# . ./install/setup.bash
-# sleep 5s
 
 # launch
-cd src/ros2_test/launch
 sleep 1s
-# 
-for node_num in `seq 0 20`
+# for shift in 0 2 4 6 8 10 12 14 16 18 20
+for shift in 0, ..., $group_num
 do
-    sed -i "s/for.*/for i in range\($node_num\)\:/" $launch_file
+    cd ~/ros2/src/ros2_test/executor
+    num_per_group=`expr $topic_num / $group_num`
+    sed -i "s/for.*/for i in range\($num_per_group\)\:/" $node_executor
+    cd ../launch
+    sed -i "s/shift.*/shift = $shift/" $launch_file
+    sed -i "s/total_pairs.*/total_pairs = $topic_num/" $launch_file
+    sed -i "s/nodes_per_group.*/nodes_per_group = $num_per_group/" $launch_file
     sleep 1s
-    timeout -s SIGINT 100s ros2 launch $launch_file
+    timeout -s SIGINT 115s ros2 launch $launch_file
     sleep 30s
-    cd ~/Documents
-    node_num=`printf "%03g" $((20*$node_num))`
-    mv -i cpu_used.txt cpu_used_$node_num.txt && :
-    mv -i mem_used.txt mem_used_$node_num.txt && :
-    mv -i net_count.txt net_count_$node_num.txt && :
-    mv -i test_node_num_*.txt delay_${node_num}_node.txt && :
-    cd ~/ros2/src/ros2_test/launch
-    sleep 5s
 done
 
 # clean
 cd ~/Documents
-dirname=result_$(date "+%Y%m%d_%H%M%S")_EXEC_NODE
+dirname=result_$(date "+%Y%m%d_%H%M%S")
 mkdir -p $dirname/data
 mv cpu_used_* ./$dirname/data/
+mv cpu_temp_* ./$dirname/data/
 mv mem_used_* ./$dirname/data/
 mv net_count_* ./$dirname/data/
 mv delay_* ./$dirname/data/
 
 # record settings
-cp ~/ros2/src/ros2_test/shellscript/node_test.sh ./$dirname/
-cp ~/ros2/src/ros2_test/launch/$launch_file ./$dirname/
-mkdir ./$dirname/scripts
-cp -r ~/ros2/src/ros2_test/ros2_test/* ./$dirname/scripts/
-cp ~/ros2/src/ros2_test/setup.py ./$dirname/
-cp ~/ros2/src/ros2_test/package.xml ./$dirname/
-ros2 doctor --report >> ~/Documents/$dirname/ros2_configurations.txt
+mkdir -p $dirname/config
+cp ~/ros2/src/ros2_test/* ./$dirname/config/
+ros2 doctor --report >> ./$dirname/ros2_configuration.txt
 
-# back to initial directory
+# back to where I was
 cd ~/ros2/src/ros2_test/shellscript
