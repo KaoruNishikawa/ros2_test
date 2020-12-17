@@ -4,12 +4,12 @@ import time
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
 
-from .check_cpu import cpu_checker
-from .check_mem import mem_checker
-from .check_net import net_checker
-from .check_temp import temp_checker
-from .node_publish import node_publish
-from .node_subscribe_rec import node_subscribe_rec
+from .ndoes.check_cpu import cpu_checker
+from .nodes.check_mem import mem_checker
+from .nodes.check_net import net_checker
+from .nodes.check_temp import temp_checker
+from .nodes.node_publish import node_publish
+from .nodes.node_subscribe_rec import node_subscribe_rec
 
 def main(args=None):
     rclpy.init(args=args)
