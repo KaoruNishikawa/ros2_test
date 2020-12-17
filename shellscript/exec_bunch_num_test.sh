@@ -18,7 +18,7 @@ for group_num in 1 2 3 4 5 6 8 10 12 15 20 24 30 40 60 120  # 2^3 3 5 ; 4*2*2=16
 do
     cd ~/ros2/src/ros2_test/executor
     num_per_group=`expr $topic_num / $group_num`
-    sed -i "s/for.*/for i in range\($num_per_group\)\:/" $node_executor
+    sed -i "s/for i in.*/for i in range\($num_per_group\)\:/" $node_executor
     cd ../launch
     sed -i "s/shift =.*/shift = $shift/" $launch_file
     sed -i "s/total_pairs =.*/total_pairs = $topic_num/" $launch_file
