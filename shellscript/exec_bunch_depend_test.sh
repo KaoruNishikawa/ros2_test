@@ -40,8 +40,12 @@ mv delay_* ./$dirname/data/
 
 # record settings
 mkdir -p $dirname/config
-cp ~/ros2/src/ros2_test/* ./$dirname/config/
+cp -r ~/ros2/src/ros2_test/* ./$dirname/config/
 ros2 doctor --report >> ./$dirname/ros2_configuration.txt
+
+# record ntp state
+mkdir -p $dirname/stats
+cp -r /var/log/ntpstats/* ./$dirname/stats/
 
 # back to where I was
 cd ~/ros2/src/ros2_test/shellscript
