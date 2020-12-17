@@ -4,7 +4,7 @@ import time
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
 
-from .ndoes.check_cpu import cpu_checker
+from .nodes.check_cpu import cpu_checker
 from .nodes.check_mem import mem_checker
 from .nodes.check_net import net_checker
 from .nodes.check_temp import temp_checker
