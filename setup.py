@@ -20,6 +20,9 @@ scripts = [
     'exec_checker',
     'node_publish',
     'node_subscribe',
+    # 'exec_node',
+]
+executors = [
     'exec_node',
 ]
 
@@ -72,6 +75,8 @@ setup(
             #'exec_node='+package_name+'.exec_node:main',
         ] + [
             f'{name}={package_name}.{name}:main' for name in scripts
+        ] + [
+            f'{name}=executor.{name}:main' for name in executors
         ],
     },
 )
