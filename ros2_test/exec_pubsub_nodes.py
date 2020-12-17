@@ -2,8 +2,8 @@
 
 node_name = "exec_pubsub"
 
-from ros2_test.talker_exec import talker_exec
-from ros2_test.listener_exec import listener_exec
+from .nodes.talker_exec import talker_exec
+from .nodes.listener_exec import listener_exec
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.parameter import Parameter

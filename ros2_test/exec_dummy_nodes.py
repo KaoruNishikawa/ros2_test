@@ -2,7 +2,7 @@
 
 node_name = "exec_dummy"
 
-from ros2_test.dummy_node_exec import dummy_node
+from .nodes.dummy_node_exec import dummy_node
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.parameter import Parameter
