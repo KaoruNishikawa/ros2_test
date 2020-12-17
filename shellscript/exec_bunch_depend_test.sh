@@ -16,7 +16,7 @@ sleep 1s
 # for shift in 0 2 4 6 8 10 12 14 16 18 20
 for shift in 0, ..., $group_num
 do
-    cd ~/ros2/src/ros2_test/executor
+    cd ~/ros2/src/ros2_test/ros2_test
     num_per_group=`expr $topic_num / $group_num`
     sed -i "s/for i in.*/for i in range\($num_per_group\)\:/" $node_executor
     cd ../launch
