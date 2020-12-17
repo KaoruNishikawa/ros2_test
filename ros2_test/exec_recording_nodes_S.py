@@ -2,11 +2,11 @@
 
 node_name = "exec_recording"
 
-from ros2_test.node_num_test_cpu import cpu_checker
-from ros2_test.node_num_test_mem import mem_checker
-from ros2_test.node_num_test_net import net_checker
-from ros2_test.node_num_test_pub import node_num_test_pub
-from ros2_test.node_num_test_sub_m import node_num_test_sub
+from .nodes.node_num_test_cpu import cpu_checker
+from .nodes.node_num_test_mem import mem_checker
+from .nodes.node_num_test_net import net_checker
+from .nodes.node_num_test_pub import node_num_test_pub
+from .nodes.node_num_test_sub_m import node_num_test_sub
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 
