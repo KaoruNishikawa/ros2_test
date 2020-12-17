@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from ros2_test.talker_exec import talker_exec
+from .nodes.talker_exec import talker_exec
 
 import rclpy
 from rclpy.executors import SingleThreadedExecutor

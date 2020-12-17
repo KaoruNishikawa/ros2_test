@@ -29,7 +29,7 @@ executors = [
 setup(
     name=package_name,
     version='0.0.0',
-    packages=[package_name, 'executor'],
+    packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -76,7 +76,7 @@ setup(
         ] + [
             f'{name}={package_name}.{name}:main' for name in scripts
         ] + [
-            f'{name}=executor.{name}:main' for name in executors
+            f'{name}={package_name}.{name}:main' for name in executors
         ],
     },
 )
