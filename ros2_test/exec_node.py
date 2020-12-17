@@ -3,14 +3,14 @@
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 
-from .node_publish import node_publish
-from .node_subscribe import node_subscribe
+from .nodes.node_publish import node_publish
+from .nodes.node_subscribe import node_subscribe
 
 def main(args=None):
     rclpy.init(args=args)
     try:
         nodes = {}
-        for i in range(20):
+        for i in range(120):
             nodes[f'pub{i:03d}'] = node_publish(
                 cli_args=[
                     "--ros-args",

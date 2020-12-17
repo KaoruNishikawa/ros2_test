@@ -7,7 +7,7 @@ def generate_launch_description():
 
     shift = 0
     total_pairs = 120
-    nodes_per_group = 20
+    nodes_per_group = 120
     num_of_groups = int(total_pairs / nodes_per_group)
 
     for i in range(num_of_groups):
