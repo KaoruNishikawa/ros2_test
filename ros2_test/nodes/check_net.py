@@ -27,7 +27,7 @@ class net_checker(Node):
         try:
             res_net = psutil.net_io_counters()
             res_net = re.sub(r'.*?\(', '', str(res_net))
-            res_net = re.sub(r'[,\)]', '', res_net)
+            res_net = re.sub(r'[ \)]', '', res_net)
         except:
             res_net = ""
         self.f_net.write(str(res_net)+'\n')
