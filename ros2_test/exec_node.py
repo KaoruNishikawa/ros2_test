@@ -9,7 +9,7 @@ from .nodes.node_publish import node_publish
 from .nodes.node_subscribe import node_subscribe
 
 def main(args=None):
-    time.sleep(5)
+    time.sleep(10)
     rclpy.init(args=args)
     try:
         nodes = {}
