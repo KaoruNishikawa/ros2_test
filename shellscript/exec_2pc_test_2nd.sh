@@ -1,7 +1,7 @@
 #!/bin/sh
 
 . ~/ros2.sh
-if [ $(lsb_release -sc) = 'melodic' ] ; then
+if [ $(lsb_release -sc) = 'bionic' ] ; then
     . ~/ros2/src/ros2_test/shellscript/make_script_dashing.sh
 fi
 
