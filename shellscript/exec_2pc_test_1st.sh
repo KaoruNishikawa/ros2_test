@@ -6,15 +6,15 @@ node_executor=exec_node.py
 ################################
 ######## configuration #########
 ################################
+shift=0
 topic_num=120
-group_num=xx
 ################################
 
 
 # launch
 sleep 1s
-# for shift in 0 2 4 6 8 10 12 14 16 18 20
-for shift in 0, ..., $group_num
+# for group_num in 1 2 3 4 5 6 10 12 15 20 30 60  # 60 = 2^2 3 5 ; 3*2*2=12
+for group_num in 1 2 3 4 5 6 8 10 12 15 20 24 30 40 60 120  # 2^3 3 5 ; 4*2*2=16
 do
     cd ~/ros2/src/ros2_test/ros2_test
     num_per_group=`expr $topic_num / $group_num`
