@@ -3,7 +3,7 @@
 import time
 
 import rclpy
-from rclpy.executors import SingleThreadedExecutor
+from rclpy.executors import MultiThreadedExecutor
 
 from .nodes.node_publish import node_publish
 from .nodes.node_subscribe import node_subscribe
@@ -13,7 +13,7 @@ def main(args=None):
     rclpy.init(args=args)
     try:
         nodes = {}
-        for i in range(120):
+        for i in range(1):
             nodes[f'pub{i:03d}'] = node_publish(
                 cli_args=[
                     "--ros-args",
@@ -25,7 +25,7 @@ def main(args=None):
                     "-r", f"__node:=node_subscribe_{i:03d}",
                 ])
 
-        executor = SingleThreadedExecutor()
+        executor = MultiThreadedExecutor()
 
         [executor.add_node(node) for node in nodes.values()]
 

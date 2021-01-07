@@ -76,7 +76,7 @@ setup(
         ] + [
             f'{name}={package_name}.{name}:main' for name in scripts
         ] + [
-            f'{name}={package_name}.{name}:main' for name in executors
+            f'{name}={package_name}.nodes.{name}:main' for name in executors
         ],
     },
 )
