@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . ~/ros2.sh
+if [ $(lsb_release -sc) = 'melodic' ] ; then
+    . ~/ros2/src/ros2_test/shellscript/make_script_dashing.sh
+fi
 
 # specify which file to launch #
 launch_file=exec_test.launch.py
