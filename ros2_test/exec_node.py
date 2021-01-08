@@ -13,7 +13,7 @@ def main(args=None):
     rclpy.init(args=args)
     try:
         nodes = {}
-        for i in range(1):
+        for i in range(20):
             nodes[f'pub{i:03d}'] = node_publish(
                 cli_args=[
                     "--ros-args",

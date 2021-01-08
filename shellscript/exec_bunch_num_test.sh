@@ -6,6 +6,7 @@ node_executor=exec_node.py
 ################################
 ######## configuration #########
 ################################
+export ROS_DOMAIN_ID=17
 shift=1
 topic_num=120
 ################################
