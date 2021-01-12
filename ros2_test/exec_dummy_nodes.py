@@ -2,12 +2,15 @@
 
 node_name = "exec_dummy"
 
+import time
+
 from .nodes.dummy_node_exec import dummy_node
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 from rclpy.parameter import Parameter
 
 def main(args=None):
+    time.sleep(10)
     rclpy.init(args=args)
     try:
         param = [[Parameter("node_num", value=f"{i:02g}")] for i in range(20)]
