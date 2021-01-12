@@ -14,7 +14,7 @@ def generate_launch_description():
     ld.add_action(
         Node(
             package='ros2_test',
-            executable='exec_recording_nodes_S',
+            executable='exec_recording_nodes_M',
         )
     )
     return ld
