@@ -21,7 +21,7 @@ do
     sed -i "s/for i in.*/for i in range\($sub_num\)\:/" $launch_pub
     sleep 1s
     timeout -s SIGINT 100s ros2 launch $launch_pub
-    file_num=`printf "%03g" ${node_num}`
+    file_num=`printf "%03g" ${sub_num}`
     mv ~/Documents/cpu_used_n* ~/Documents/cpu_used_pub_${file_num}.txt
     mv ~/Documents/cpu_temp_n* ~/Documents/cpu_temp_pub_${file_num}.txt
     mv ~/Documents/mem_used_n* ~/Documents/mem_used_pub_${file_num}.txt
