@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# keep original
+ROS_DOMAIN_ID_ORIGINAL=${ROS_DOMAIN_ID}
+
 # specify which file to launch #
 launch_sub=net_count_sub.launch.py
 ################################
@@ -42,3 +45,6 @@ cp -r /var/log/ntpstats/* ./$dirname/stats/
 
 # back to where I was
 cd ~/ros2/src/ros2_test/shellscript
+
+
+export ROS_DOMAIN_ID=${ROS_DOMAIN_ID_ORIGINAL}
