@@ -31,6 +31,7 @@ def generate_launch_description():
             parameters=[
                 {'nodes_per_group': nodes_per_group},
                 {'group': 99},
+                {'group_srec': 99},
                 {'shift': shift},
                 {'total_pairs': total_pairs},
             ],
