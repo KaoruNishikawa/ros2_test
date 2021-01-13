@@ -20,7 +20,7 @@ do
     cd ~/ros2/src/ros2_test/launch
     sed -i "s/for i in.*/for i in range\($sub_num\)\:/" $launch_pub
     sleep 1s
-    timeout -s SIGINT 101s ros2 launch $launch_pub
+    timeout -s SIGINT 100s ros2 launch $launch_pub
     sleep 30s
 done
 
