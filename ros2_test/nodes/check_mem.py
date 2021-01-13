@@ -27,7 +27,7 @@ class mem_checker(Node):
         try:
             res_mem = str(psutil.virtual_memory())
             res_mem = re.sub(r'.*\(', '', res_mem)
-            res_mem = re.sub(r'[,\)$]', '', res_mem)
+            res_mem = re.sub(r'[ \)$]', '', res_mem)
         except:
             res_mem = ""
         self.f_mem.write(res_mem+'\n')

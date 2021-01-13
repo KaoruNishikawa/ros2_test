@@ -17,7 +17,7 @@ for node_num in `seq 0 20`
 do
     sed -i "s/for.*/for i in range\($node_num\)\:/" $launch_file
     sleep 1s
-    timeout -s SIGINT 100s ros2 launch $launch_file
+    timeout -s SIGINT 115s ros2 launch $launch_file
     sleep 30s
     cd ~/Documents
     node_num=`printf "%03g" $((20*$node_num))`

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import time
+
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
 
@@ -13,7 +14,7 @@ from .nodes.node_subscribe_rec import node_subscribe_rec
 
 def main(args=None):
     rclpy.init(args=args)
-    time.sleep(15)  # wait for start of other nodes
+    # time.sleep(15)  # wait for start of other nodes
     try:
         nodes = {
             'cpu': cpu_checker(),

@@ -1,30 +1,26 @@
 #!/bin/sh
 
+# keep original
+ROS_DOMAIN_ID_ORIGINAL=${ROS_DOMAIN_ID}
+
 # specify which file to launch #
-launch_file=exec_test.launch.py
-node_executor=exec_node.py
+launch_pub=net_count_pub.launch.py
 ################################
 ######## configuration #########
 ################################
-topic_num=120
-group_num=xx
+export ROS_DOMAIN_ID=20
 ################################
 
 
 # launch
 sleep 1s
-# for shift in 0 2 4 6 8 10 12 14 16 18 20
-for shift in 0, ..., $group_num
+
+for sub_num in 1 2 3 4 5 10 30 50 100
 do
-    cd ~/ros2/src/ros2_test/executor
-    num_per_group=`expr $topic_num / $group_num`
-    sed -i "s/for i in.*/for i in range\($num_per_group\)\:/" $node_executor
-    cd ../launch
-    sed -i "s/shift =.*/shift = $shift/" $launch_file
-    sed -i "s/total_pairs =.*/total_pairs = $topic_num/" $launch_file
-    sed -i "s/nodes_per_group =.*/nodes_per_group = $num_per_group/" $launch_file
+    cd ~/ros2/src/ros2_test/launch
+    sed -i "s/for i in.*/for i in range\($sub_num\)\:/" $launch_pub
     sleep 1s
-    timeout -s SIGINT 115s ros2 launch $launch_file
+    timeout -s SIGINT 100s ros2 launch $launch_pub
     sleep 30s
 done
 
@@ -49,3 +45,5 @@ cp -r /var/log/ntpstats/* ./$dirname/stats/
 
 # back to where I was
 cd ~/ros2/src/ros2_test/shellscript
+
+export ROS_DOMAIN_ID=${ROS_DOMAIN_ID_ORIGINAL}

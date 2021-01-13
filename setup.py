@@ -5,25 +5,24 @@ package_name = 'ros2_test'
 scripts = [
     'dummy_sub',
     'dummy_node',
-    'exec_recording_nodes_S',
-    'exec_recording_nodes_M',
-    'exec_dummy_nodes',
     'dummy_node_exec',
     'talker_exec',
     'listener_exec',
-    'exec_pubsub_nodes',
-    'exec_param_talker',
     'check_cpu',
     'check_mem',
     'check_net',
     'check_temp',
-    'exec_checker',
     'node_publish',
     'node_subscribe',
-    # 'exec_node',
 ]
 executors = [
     'exec_node',
+    'exec_recording_nodes_S',
+    'exec_recording_nodes_M',
+    'exec_dummy_nodes',
+    'exec_pubsub_nodes',
+    'exec_param_talker',
+    'exec_checker',
 ]
 
 setup(
@@ -74,7 +73,7 @@ setup(
             #'node_subscribe='+package_name+'.node_subscribe:main',
             #'exec_node='+package_name+'.exec_node:main',
         ] + [
-            f'{name}={package_name}.{name}:main' for name in scripts
+            f'{name}={package_name}.nodes.{name}:main' for name in scripts
         ] + [
             f'{name}={package_name}.{name}:main' for name in executors
         ],
