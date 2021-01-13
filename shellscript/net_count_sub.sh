@@ -1,31 +1,23 @@
 #!/bin/sh
 
 # specify which file to launch #
-launch_file=exec_test.launch.py
-node_executor=exec_node.py
+launch_sub=net_count_sub.launch.py
 ################################
 ######## configuration #########
 ################################
-# export ROS_DOMAIN_ID=17
-shift=0
-topic_num=120
+export ROS_DOMAIN_ID=20
 ################################
 
 
 # launch
 sleep 1s
-# for group_num in 1 2 3 4 5 6 10 12 15 20 30 60  # 60 = 2^2 3 5 ; 3*2*2=12
-for group_num in 1 2 3 4 5 6 8 10 12 15 20 24 30 40 60 120  # 2^3 3 5 ; 4*2*2=16
+
+for sub_num in 1 2 3 4 5 10 30 50 100
 do
-    cd ~/ros2/src/ros2_test/ros2_test
-    num_per_group=`expr $topic_num / $group_num`
-    sed -i "s/for i in.*/for i in range\($num_per_group\)\:/" $node_executor
-    cd ../launch
-    sed -i "s/shift =.*/shift = $shift/" $launch_file
-    sed -i "s/total_pairs =.*/total_pairs = $topic_num/" $launch_file
-    sed -i "s/nodes_per_group =.*/nodes_per_group = $num_per_group/" $launch_file
+    cd ~/ros2/src/ros2_test/launch
+    sed -i "s/for i in.*/for i in range\($sub_num\)\:/" $launch_sub
     sleep 1s
-    timeout -s SIGINT 115s ros2 launch $launch_file
+    timeout -s SIGINT 100s ros2 launch $launch_sub
     sleep 30s
 done
 
