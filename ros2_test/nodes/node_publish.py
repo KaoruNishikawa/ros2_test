@@ -22,10 +22,10 @@ class node_publish(Node):
         self.group = int(self.declare_parameter('group').value)
         nodes_per_group = int(self.declare_parameter('nodes_per_group').value)
         total_pairs = int(self.declare_parameter('total_pairs').value)
-        if not self.group == 99:
+        if self.group < 90:
             self.num = (self.NUM + self.group * nodes_per_group) % total_pairs
         else:
-            self.num = 999
+            self.num = 900 + self.group
         self.pub = self.create_publisher(Float64, f"/test/no{self.num:03d}", 1)
         timer_period = 0.1
         self.create_timer(timer_period, self.talker)

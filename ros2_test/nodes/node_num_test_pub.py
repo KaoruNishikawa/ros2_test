@@ -15,7 +15,7 @@ class node_num_test_pub(Node):
         self.declare_parameter('node_num')
         self.num = str(self.get_parameter('node_num').value)
         qos = rclpy.qos.QoSProfile(depth=1)
-        self.my_pub = self.create_publisher(Float64, "/test/node_num_"+self.num, qos)
+        self.my_pub = self.create_publisher(Float64, f"test/node/{self.num}", qos)
         timer_period = 0.1
         self.create_timer(timer_period, self.my_publisher)
 

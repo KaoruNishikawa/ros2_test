@@ -5,9 +5,9 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
 
-    shift = 0
+    shift = 1
     total_pairs = 120
-    nodes_per_group = 120
+    nodes_per_group = 20
     num_of_groups = int(total_pairs / nodes_per_group)
 
     for i in range(num_of_groups):
@@ -31,6 +31,7 @@ def generate_launch_description():
             parameters=[
                 {'nodes_per_group': nodes_per_group},
                 {'group': 99},
+                {'group_srec': 99},
                 {'shift': shift},
                 {'total_pairs': total_pairs},
             ],

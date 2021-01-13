@@ -1,12 +1,16 @@
 #!/bin/sh
 
+. ~/ros2.sh
+if [ $(lsb_release -sc) = 'bionic' ] ; then
+    . ~/ros2/src/ros2_test/shellscript/make_script_dashing.sh
+fi
+
 # specify which file to launch #
 launch_file=exec_test.launch.py
 node_executor=exec_node.py
 ################################
 ######## configuration #########
 ################################
-# export ROS_DOMAIN_ID=17
 shift=0
 topic_num=120
 ################################
