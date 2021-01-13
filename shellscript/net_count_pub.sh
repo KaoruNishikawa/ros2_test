@@ -21,11 +21,12 @@ do
     sed -i "s/for i in.*/for i in range\($sub_num\)\:/" $launch_pub
     sleep 1s
     timeout -s SIGINT 100s ros2 launch $launch_pub
-    mv ~/Documents/cpu_used_n* ~/Documents/cpu_used_pub_${sub_num}.txt
-    mv ~/Documents/cpu_temp_n* ~/Documents/cpu_temp_pub_${sub_num}.txt
-    mv ~/Documents/mem_used_n* ~/Documents/mem_used_pub_${sub_num}.txt
-    mv ~/Documents/net_count_n* ~/Documents/net_count_pub_${sub_num}.txt
-    mv ~/Documents/delay_n* ~/Documents/delay_pub_${sub_num}.txt
+    file_num=`printf "%03g" ${node_num}`
+    mv ~/Documents/cpu_used_n* ~/Documents/cpu_used_pub_${file_num}.txt
+    mv ~/Documents/cpu_temp_n* ~/Documents/cpu_temp_pub_${file_num}.txt
+    mv ~/Documents/mem_used_n* ~/Documents/mem_used_pub_${file_num}.txt
+    mv ~/Documents/net_count_n* ~/Documents/net_count_pub_${file_num}.txt
+    mv ~/Documents/delay_n* ~/Documents/delay_pub_${file_num}.txt
     sleep 30s
 done
 
