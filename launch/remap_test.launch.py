@@ -17,3 +17,7 @@ def generate_launch_description():
             namespace='/test',
         )
     )
+    return ld
+
+if __name__ == "__main__":
+    main()
