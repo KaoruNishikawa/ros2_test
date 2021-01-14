@@ -12,7 +12,7 @@ def generate_launch_description():
             ],
             remappings=[
                 ('topic_name', 'remapped'),
-                ('node_999_1', 'NNN'),
+                ('remap_test:node_999_1', 'NNN'),
             ],
             namespace='/test',
         )
