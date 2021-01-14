@@ -16,7 +16,7 @@ class RemapTest(Node):
 
     def __init__(self):
         super().__init__('remap_test')
-        num = float(self.declare_parameter('number').value)
+        num = int(self.declare_parameter('number').value)
         self.publisher = self.create_publisher(Float64, f'node_{num}_{self.NUM}', 1)
         self.publisher2 = self.create_publisher(Float64, 'topic_name', 1)
         self.create_timer(1, self.talker)
