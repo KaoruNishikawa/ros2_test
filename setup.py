@@ -14,6 +14,7 @@ scripts = [
     'check_temp',
     'node_publish',
     'node_subscribe',
+    'remap_test',
 ]
 executors = [
     'exec_node',
@@ -23,6 +24,7 @@ executors = [
     'exec_pubsub_nodes',
     'exec_param_talker',
     'exec_checker',
+    'exec_remap_test',
 ]
 
 setup(
