@@ -5,7 +5,7 @@ import time
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float64
+from std_msgs.msg import Float64, String
 
 node_name = "node_subscribe"
 
