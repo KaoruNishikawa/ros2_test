@@ -11,7 +11,7 @@ class RemapTest(Node):
     NUM = 0
 
     def __new__(cls):
-        cls += 1
+        cls.NUM += 1
         return super(RemapTest, cls).__new__(cls)
 
     def __init__(self):
