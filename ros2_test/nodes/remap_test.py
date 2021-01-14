@@ -26,7 +26,7 @@ class RemapTest(Node):
         msg = Float64()
         msg.data = time.time()
         self.publisher.publish(msg)
-        if self.publisher2:
+        if self.NUM == 1:
             msg2 = Float64()
             msg2.data = 2.0
             self.publisher2.publish(msg2)
