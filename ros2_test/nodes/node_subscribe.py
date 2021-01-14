@@ -27,11 +27,16 @@ class node_subscribe(Node):
         shift = int(self.declare_parameter('shift').value)
         self.num = (self.NUM + self.group * nodes_per_group + shift) % total_pairs
         sub = self.create_subscription(Float64, f"/test/no{self.num:03d}", self.callback, 1)
+        if self.group < 90:
+            self.create_subscription(String, f"/test/data_{self.num:03d}", self.str_callback, 1)
 
     def callback(self, data):
         curr_time = float(time.time())
         sent_time = float(data.data)
         delta = curr_time - sent_time
+    
+    def str_callback(self, data):
+        length = len(str(data))
 
 
 def main(args=None):
