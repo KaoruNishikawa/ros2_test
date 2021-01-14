@@ -3,7 +3,7 @@
 import rclpy
 from rclpy.executors import SingleThreadedExecutor
 
-from .node.remap_test import RemapTest
+from .nodes.remap_test import RemapTest
 
 
 def main(args=args):
