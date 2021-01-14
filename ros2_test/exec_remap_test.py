@@ -6,7 +6,7 @@ from rclpy.executors import SingleThreadedExecutor
 from .nodes.remap_test import RemapTest
 
 
-def main(args=args):
+def main(args=None):
     rclpy.init(args=args)
     try:
         nodes = {}
