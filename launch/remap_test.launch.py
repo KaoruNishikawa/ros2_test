@@ -8,7 +8,7 @@ def generate_launch_description():
             package='ros2_test',
             executable='exec_remap_test',
             parameters=[
-                {'remap_test:number': 999},
+                {'remap_test.number': 999},
             ],
             remappings=[
                 ('topic_name', 'remapped'),
