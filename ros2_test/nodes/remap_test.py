@@ -18,16 +18,18 @@ class RemapTest(Node):
         super().__init__('remap_test')
         num = int(self.declare_parameter('number').value)
         self.publisher = self.create_publisher(Float64, f'node_{num}_{self.NUM}', 1)
-        self.publisher2 = self.create_publisher(Float64, 'topic_name', 1)
+        if self.NUM == 1:
+            self.publisher2 = self.create_publisher(Float64, 'topic_name', 1)
         self.create_timer(1, self.talker)
 
     def talker(self):
         msg = Float64()
         msg.data = time.time()
         self.publisher.publish(msg)
-        msg2 = Float64
-        msg2.data = 2
-        self.publisher2.publish(msg2)
+        if self.publisher2:
+            msg2 = Float64
+            msg2.data = 2
+            self.publisher2.publish(msg2)
 
 
 def main(args=None):
