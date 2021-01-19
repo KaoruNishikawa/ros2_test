@@ -12,6 +12,7 @@ def main():
             sent = netcount.bytes_sent
             recv = netcount.bytes_recv
             f.write(str(sent)+" "+str(recv))
+            time.sleep(2)
     return
 
 
