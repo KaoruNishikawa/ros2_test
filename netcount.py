@@ -6,7 +6,7 @@ import os
 
 
 def main():
-    with open(f"{os.environ['HOME']}/Documents/netcount.txt") as f:
+    with open(f"{os.environ['HOME']}/Documents/netcount.txt", 'w') as f:
         for i in range(50):
             netcount = psutil.net_io_counters()
             sent = netcount.bytes_sent
