@@ -11,7 +11,7 @@ def main():
             netcount = psutil.net_io_counters()
             sent = netcount.bytes_sent
             recv = netcount.bytes_recv
-            f.write(str(sent)+" "+str(recv))
+            f.write(str(sent)+" "+str(recv)+"\n")
             time.sleep(2)
     return
 
