@@ -9,7 +9,7 @@ from std_msgs.msg import Float64, String
 node_name = "node_publish"
 
 
-class node_publish(Node):
+class NodePublish(Node):
 
     NUM = 0
 

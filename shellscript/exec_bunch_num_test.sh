@@ -7,46 +7,54 @@ node_executor=exec_node.py
 ######## configuration #########
 ################################
 # export ROS_DOMAIN_ID=17
-shift=0
-topic_num=120
+export ROS2_TEST_SHIFT=0
+export ROS2_TEST_TOPIC_NUM=$1
 ################################
 
+my_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# get divisors of $ROS2_TEST_TOPIC_NUM
+divisors=()
+if [ $ROS2_TEST_TOPIC_NUM == 0 ]
+then
+    divisors+=(1)
+else
+    for i in `seq 1 $ROS2_TEST_TOPIC_NUM`
+    do
+        if [ $(($ROS2_TEST_TOPIC_NUM % $i)) == 0 ]
+        then
+            divisors+=($i)
+        fi
+    done
+fi
+
+# data directory
+export ROS2_TEST_SAVE_DIR=$HOME/Documents/result_$(date "+%Y%m%d_%H%M%S")
+mkdir -p $ROS2_TEST_SAVE_DIR
 
 # launch
-sleep 1s
-# for group_num in 1 2 3 4 5 6 10 12 15 20 30 60  # 60 = 2^2 3 5 ; 3*2*2=12
-for group_num in 1 2 3 4 5 6 8 10 12 15 20 24 30 40 60 120  # 2^3 3 5 ; 4*2*2=16
+for group_num in ${divisors[@]}
 do
-    cd ~/ros2/src/ros2_test/ros2_test
-    num_per_group=`expr $topic_num / $group_num`
-    sed -i "s/for i in.*/for i in range\($num_per_group\)\:/" $node_executor
-    cd ../launch
-    sed -i "s/shift =.*/shift = $shift/" $launch_file
-    sed -i "s/total_pairs =.*/total_pairs = $topic_num/" $launch_file
-    sed -i "s/nodes_per_group =.*/nodes_per_group = $num_per_group/" $launch_file
+    export ROS2_TEST_NUM_PER_GROUP=`expr $ROS2_TEST_TOPIC_NUM / $group_num`
+    cd $my_dir/../launch
     sleep 1s
-    timeout -s SIGINT 115s ros2 launch $launch_file
-    sleep 30s
+    timeout -s SIGINT 15s ros2 launch $launch_file
+    sleep 5s
 done
 
-# clean
-cd ~/Documents
-dirname=result_$(date "+%Y%m%d_%H%M%S")
-mkdir -p $dirname/data
-mv cpu_used_* ./$dirname/data/
-mv cpu_temp_* ./$dirname/data/
-mv mem_used_* ./$dirname/data/
-mv net_count_* ./$dirname/data/
-mv delay_* ./$dirname/data/
-
 # record settings
-mkdir -p $dirname/config
-cp -r ~/ros2/src/ros2_test/* ./$dirname/config/
-ros2 doctor --report >> ./$dirname/ros2_configuration.txt
+mkdir -p $ROS2_TEST_SAVE_DIR/config
+cp -r $my_dir/../* $ROS2_TEST_SAVE_DIR/config/
+ros2 doctor --report >> $ROS2_TEST_SAVE_DIR/ros2_configuration.txt || :
 
 # record ntp state
-mkdir -p $dirname/stats
-cp -r /var/log/ntpstats/* ./$dirname/stats/
+mkdir -p $ROS2_TEST_SAVE_DIR/stats
+cp -r /var/log/ntpstats/* ./$ROS2_TEST_SAVE_DIR/stats/ || :
 
-# back to where I was
-cd ~/ros2/src/ros2_test/shellscript
+# back to where I am
+cd $my_dir
+
+unset ROS2_TEST_SHIFT
+unset ROS2_TEST_TOPIC_NUM
+unset ROS2_TEST_SAVE_DIR
+unset ROS2_TEST_NUM_PER_GROUP

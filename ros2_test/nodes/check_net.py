@@ -11,15 +11,18 @@ from std_msgs.msg import Float64
 node_name = "net_checker"
 
 
-class net_checker(Node):
+class NetChecker(Node):
 
     def __init__(self):
         super().__init__(node_name)
         shift = int(self.declare_parameter('shift').value)
         nodes_per_group = int(self.declare_parameter('nodes_per_group').value)
         total_pairs = int(self.declare_parameter('total_pairs').value)
-        num_of_groups = int(total_pairs / nodes_per_group)
-        self.f_net = open(f"{os.environ['HOME']}/Documents/net_count_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.txt", "w")
+        num_of_groups = int(os.environ['NUM_OF_GROUPS'])
+        self.f_net = open(
+            f"{os.environ['ROS2_TEST_SAVE_DIR']}/net_count_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.txt",  # noqa: E501
+            "w"
+        )
         timer_period = 2
         self.create_timer(timer_period, self.checker)
 
