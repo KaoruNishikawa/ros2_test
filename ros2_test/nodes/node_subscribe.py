@@ -10,14 +10,14 @@ from std_msgs.msg import Float64, String
 node_name = "node_subscribe"
 
 
-class node_subscribe(Node):
+class NodeSubscribe(Node):
 
     NUM = 0
 
     def __new__(cls, **kwargs):
         cls.NUM += 1
         # cls.node_name = f"{node_name}_{cls.NUM:03d}"
-        return super(node_subscribe, cls).__new__(cls)
+        return super().__new__(cls)
 
     def __init__(self, **kwargs):
         super().__init__(node_name, **kwargs)

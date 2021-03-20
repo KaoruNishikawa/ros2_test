@@ -11,15 +11,18 @@ from std_msgs.msg import Float64
 node_name = "temp_checker"
 
 
-class temp_checker(Node):
+class TempChecker(Node):
 
     def __init__(self):
         super().__init__(node_name)
         shift = int(self.declare_parameter('shift').value)
         nodes_per_group = int(self.declare_parameter('nodes_per_group').value)
         total_pairs = int(self.declare_parameter('total_pairs').value)
-        num_of_groups = int(total_pairs / nodes_per_group)
-        self.f_temp = open(f"{os.environ['HOME']}/Documents/cpu_temp_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.txt", "w")
+        num_of_groups = int(os.environ['NUM_OF_GROUPS'])
+        self.f_temp = open(
+            f"{os.environ['ROS2_TEST_SAVE_DIR']}/cpu_temp_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.txt",  # noqa: E501
+            "w"
+        )
         timer_period = 2
         self.create_timer(timer_period, self.checker)
 
@@ -28,7 +31,8 @@ class temp_checker(Node):
             res_temp = psutil.sensors_temperatures()
             res_temp = str(res_temp["coretemp"])
             res_temp = re.sub(r'[\(\)\[ \]]', '', res_temp)
-            res_temp = re.sub(r'shwtemp', '\n', res_temp).split('\n')[1:]  # first elem is empty
+            # first elem is empty:
+            res_temp = re.sub(r'shwtemp', '\n', res_temp).split('\n')[1:]
         except:
             res_temp = []
         for temp in res_temp:
