@@ -13,7 +13,7 @@ This package provides:
 
 ## Installation
 
-```
+```shell
 git clone https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/on/your/machine/
 ```
 
@@ -23,13 +23,13 @@ git clone https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/on/y
 
 - Executor configuration in 1 PC:
 
-```
+```shell
 . exec_bunch_num_test.sh <NUM>
 ```
 
 where `<NUM>` is number of dummy pub/sub pairs to launch. With some ROS 2 nodes launched, this command can test the load of the nodes assigning the number 0:
 
-```
+```shell
 ros2 launch <arbitrary launch file>
 . exec_bunch_num_test.sh 0
 ```
