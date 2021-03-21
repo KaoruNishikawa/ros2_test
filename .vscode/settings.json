@@ -1,4 +1,4 @@
 {
-    "workbench.colorTheme": "Kimbie Dark",
-    "python.pythonPath": "/home/amigos/.pyenv/shims/python"
+    "workbench.colorTheme": "Solarized Light",
+    "python.pythonPath": ".venv/bin/python3.7"
 }
