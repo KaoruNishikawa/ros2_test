@@ -30,7 +30,7 @@ class NodeSubscribeRec(Node):
             f"{os.environ['ROS2_TEST_SAVE_DIR']}/delay_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.csv",  # noqa: E501
             "w",
         )
-        self.f.write("delay\n")
+        self.f.write("delay" + "\n")
         sub = self.create_subscription(  # noqa: F841
             Float64, f"/test/no{self.group_srec}", self.callback, 1
         )

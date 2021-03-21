@@ -25,6 +25,7 @@ class CpuChecker(Node):
             ", ".join(
                 [f"CPU{i+1:02}" for i in range(len(psutil.cpu_percent(percpu=True)))]
             )
+            + "\n"
         )
         timer_period = 2
         self.create_timer(timer_period, self.checker)
