@@ -21,6 +21,11 @@ class CpuChecker(Node):
             f"{os.environ['ROS2_TEST_SAVE_DIR']}/cpu_usage_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.csv",  # noqa: E501
             "w",
         )
+        self.f_cpu.write(
+            ", ".join(
+                [f"CPU{i+1:02}" for i in range(len(psutil.cpu_percent(percpu=True)))]
+            )
+        )
         timer_period = 2
         self.create_timer(timer_period, self.checker)
 

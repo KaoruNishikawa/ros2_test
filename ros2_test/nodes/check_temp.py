@@ -42,6 +42,7 @@ class TempChecker(Node):
                             for elem in cpu.__repr__().split(",")
                         ]
                     )
+                    + "\n"
                 )
         except AttributeError:  # implementation of this function is OS dependent
             pass
