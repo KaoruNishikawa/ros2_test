@@ -11,8 +11,10 @@ export ROS2_TEST_SHIFT=0
 export ROS2_TEST_TOPIC_NUM=$1
 ################################
 
-if ! [ type ros2 > /dev/null 2>&1 ]
+if type ros2 > /dev/null 2>&1
 then
+    echo "Test Start"
+else
     echo "ros2 command not defined"
     return
 fi
