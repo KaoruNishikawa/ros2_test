@@ -38,6 +38,7 @@ fi
 
 # data directory
 export ROS2_TEST_SAVE_DIR=$HOME/Documents/result_$(date "+%Y%m%d_%H%M%S")
+echo $ROS2_TEST_SAVE_DIR
 mkdir -p $ROS2_TEST_SAVE_DIR
 
 # launch
