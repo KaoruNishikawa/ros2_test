@@ -11,6 +11,12 @@ export ROS2_TEST_SHIFT=0
 export ROS2_TEST_TOPIC_NUM=$1
 ################################
 
+if !(type "ros2" > /dev/null 2>&1)
+then
+    echo "ros2 command not defined"
+    exit 1
+fi
+
 my_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # get divisors of $ROS2_TEST_TOPIC_NUM
