@@ -3,18 +3,25 @@
 ## About this package
 
 This package provides:
+
 - ROS 2 nodes for testing ROS 2 performance;
-    - CPU usage
-    - CPU temperature
-    - Memory usage
-    - Latency
-    - Amount of network communications
+  - CPU usage
+  - CPU temperature
+  - Memory usage
+  - Latency
+  - Amount of network communications
 - A notebook for analysing the data and draw figures.
 
 ## Installation
 
 ```shell
-git clone https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/on/your/machine/
+git clone https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/in/your/machine/
+```
+
+If you need previous version:
+
+```shell
+git clone -b v1.0.0 https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/in/your/machine/
 ```
 
 ## Usage

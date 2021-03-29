@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os
+import os  # noqa: F401
 import time
 
 import rclpy
@@ -26,7 +26,7 @@ class NodeSubscribe(Node):
         total_pairs = int(self.declare_parameter("total_pairs").value)
         shift = int(self.declare_parameter("shift").value)
         self.num = (self.NUM + self.group * nodes_per_group + shift) % total_pairs
-        sub = self.create_subscription(
+        sub = self.create_subscription(  # noqa: F841
             Float64, f"/test/no{self.num:03d}", self.callback, 1
         )
         if self.group < 90:
@@ -37,10 +37,10 @@ class NodeSubscribe(Node):
     def callback(self, data):
         curr_time = float(time.time())
         sent_time = float(data.data)
-        delta = curr_time - sent_time
+        delta = curr_time - sent_time  # noqa: F841
 
     def str_callback(self, data):
-        length = len(str(data))
+        length = len(str(data))  # noqa: F841
 
 
 def main(args=None):

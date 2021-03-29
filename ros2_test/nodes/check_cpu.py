@@ -22,7 +22,7 @@ class CpuChecker(Node):
             "w",
         )
         self.f_cpu.write(
-            ", ".join(
+            ",".join(
                 [f"CPU{i+1:02}" for i in range(len(psutil.cpu_percent(percpu=True)))]
             )
             + "\n"
@@ -31,7 +31,7 @@ class CpuChecker(Node):
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
-        res_cpu = ", ".join(
+        res_cpu = ",".join(
             [str(res) for res in psutil.cpu_percent(interval=0.5, percpu=True)]
         )
         self.f_cpu.write(res_cpu + "\n")
