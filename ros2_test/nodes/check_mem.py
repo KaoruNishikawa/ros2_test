@@ -22,12 +22,12 @@ class MemChecker(Node):
             f"{os.environ['ROS2_TEST_SAVE_DIR']}/mem_usage_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.csv",  # noqa: E501
             "w",
         )
-        self.f_mem.write(", ".join(psutil.virtual_memory()._fields) + "\n")
+        self.f_mem.write(",".join(psutil.virtual_memory()._fields) + "\n")
         timer_period = 2
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
-        res_mem = ", ".join(
+        res_mem = ",".join(
             [
                 re.sub(r".*?=([\d.]*).*?$", r"\1", elem)
                 for elem in psutil.virtual_memory().__repr__().split(",")

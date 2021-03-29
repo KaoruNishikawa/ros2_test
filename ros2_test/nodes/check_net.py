@@ -22,12 +22,12 @@ class NetChecker(Node):
             f"{os.environ['ROS2_TEST_SAVE_DIR']}/net_count_n{nodes_per_group:03d}x{num_of_groups:03d}g_s{shift:02d}.csv",  # noqa: E501
             "w",
         )
-        self.f_net.write(", ".join(psutil.net_io_counters()._fields) + "\n")
+        self.f_net.write(",".join(psutil.net_io_counters()._fields) + "\n")
         timer_period = 2
         self.create_timer(timer_period, self.checker)
 
     def checker(self):
-        res_net = ", ".join(
+        res_net = ",".join(
             [
                 re.sub(r".*?=([\d.]*).*?$", r"\1", elem)
                 for elem in psutil.net_io_counters().__repr__().split(",")

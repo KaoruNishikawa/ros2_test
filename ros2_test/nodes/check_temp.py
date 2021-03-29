@@ -23,7 +23,7 @@ class TempChecker(Node):
             "w",
         )
         self.f_temp.write(
-            ", ".join(psutil.sensors_temperatures()["coretemp"][0]._fields) + "\n"
+            ",".join(psutil.sensors_temperatures()["coretemp"][0]._fields) + "\n"
         )
         timer_period = 2
         self.create_timer(timer_period, self.checker)
@@ -32,7 +32,7 @@ class TempChecker(Node):
         try:
             for cpu in psutil.sensors_temperatures()["coretemp"]:
                 self.f_temp.write(
-                    ", ".join(
+                    ",".join(
                         [
                             re.sub(
                                 r".*?=([\'\"][a-zA-Z \d]*[\'\"]|[\d.]*).*?$",
