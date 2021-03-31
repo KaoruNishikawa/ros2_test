@@ -41,6 +41,8 @@ ros2 launch <arbitrary launch file>
 . exec_bunch_num_test.sh 0
 ```
 
+The data is recorded in your `~/Documents/result_(date and time)` directory. The path is displayed at the top and the last line of the terminal.
+
 ### Analyse the Data
 
 This analysis tool uses xarray and other packages. Please configure the environment using
