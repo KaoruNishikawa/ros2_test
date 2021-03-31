@@ -43,6 +43,8 @@ ros2 launch <arbitrary launch file>
 
 The data is recorded in your `~/Documents/result_(date and time)` directory. The path is displayed at the top and the last line of the terminal.
 
+<img width="466" alt="スクリーンショット 2021-03-31 19 04 44" src="https://user-images.githubusercontent.com/68896036/113128074-625b7080-9254-11eb-890f-b1ddfa6c06cc.png">
+
 ### Analyse the Data
 
 This analysis tool uses xarray and other packages. Please configure the environment using
