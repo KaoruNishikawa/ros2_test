@@ -63,6 +63,9 @@ cp -r /var/log/ntpstats/* ./$ROS2_TEST_SAVE_DIR/stats/ || :
 # back to where I am
 cd $my_dir
 
+echo "Test Finished"
+echo $ROS2_TEST_SAVE_DIR
+
 unset ROS2_TEST_SHIFT
 unset ROS2_TEST_TOPIC_NUM
 unset ROS2_TEST_SAVE_DIR

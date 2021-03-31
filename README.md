@@ -45,7 +45,7 @@ ros2 launch <arbitrary launch file>
 
 This analysis tool uses xarray and other packages. Please configure the environment using
 
-```python
+```shell
 poetry install
 ```
 
