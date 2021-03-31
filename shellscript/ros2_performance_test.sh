@@ -47,7 +47,7 @@ do
     export ROS2_TEST_NUM_PER_GROUP=`expr $ROS2_TEST_TOPIC_NUM / $group_num`
     cd $my_dir/../launch
     sleep 1s
-    timeout -s SIGINT 15s ros2 launch $launch_file
+    timeout -s SIGINT 30s ros2 launch $launch_file
     sleep 5s
 done
 

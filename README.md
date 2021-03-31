@@ -18,7 +18,7 @@ This package provides:
 git clone https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/in/your/machine/
 ```
 
-If you need previous version:
+If you need the previous version:
 
 ```shell
 git clone -b v1.0.0 https://github.com/kaorunishikawa/ros2_test.git path/to/somewhere/in/your/machine/
@@ -26,7 +26,7 @@ git clone -b v1.0.0 https://github.com/kaorunishikawa/ros2_test.git path/to/some
 
 ## Usage
 
-### run PERFORMANCE TEST
+### Run Performance Test
 
 - Executor configuration in 1 PC:
 
@@ -41,10 +41,22 @@ ros2 launch <arbitrary launch file>
 . exec_bunch_num_test.sh 0
 ```
 
-### ANALYSE the data
+### Analyse the Data
 
-Open `analysis/**.ipynb`, and run the cells.
+This analysis tool uses xarray and other packages. Please configure the environment using
+
+```python
+poetry install
+```
+
+or install them manually (list of packages needed is in `[tool.poetry.dependencies]` section of `pyproject.toml`).
+
+Open `analysis/analysis.ipynb`, specify where the data is stored, and run `draw_figure(path)`.
 
 ## Enhancement
 
-To test multiple machines performance, comment out or configure Publisher nodes or Subscriber nodes accordingly in `ros2_test/exec_node.py`, then assign an environment variable `ROS_DOMAIN_ID` and *remote launch* (using the shell script or launch file) the nodes via `shellscript/exec_bunch_num_test.sh`.
+To test multiple machines performance, 
+
+- comment out or configure Publisher nodes or Subscriber nodes accordingly (avoid conflict of node name, etc.) in `ros2_test/exec_node.py`
+- assign an environment variable `ROS_DOMAIN_ID` if needed
+- *remote launch* (using the shell script or launch file) the nodes via `shellscript/ros2_performance_test.sh`
