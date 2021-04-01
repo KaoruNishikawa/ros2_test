@@ -55,7 +55,7 @@ poetry install
 
 or install them manually (list of packages needed is in `[tool.poetry.dependencies]` section of `pyproject.toml`).
 
-Open `analysis/analysis.ipynb`, specify where the data is stored, and run `draw_figure(path)`.
+Then open `analysis/analysis.ipynb`, specify where the data is stored, and run `draw_figure(path)` or `AnalyseRos2Test(path).data`.
 
 ## Enhancement
 
