@@ -134,3 +134,6 @@ dmypy.json
 # editor
 .vscode/
 *.code-workspace
+
+# output file
+*.pdf
