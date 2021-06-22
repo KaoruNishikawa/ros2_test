@@ -20,7 +20,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'numpy >= 1.19', 'xarray-dataclasses >= 0.3'],
     zip_safe=True,
     maintainer='Kaoru Nishikawa',
     maintainer_email='k.nishikawa@a.phys.nagoya-u.ac.jp',
