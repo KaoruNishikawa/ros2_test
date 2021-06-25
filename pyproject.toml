@@ -5,7 +5,7 @@ description = ""
 authors = ["KaoruNishikawa <k.nishikawa@a.phys.nagoya-u.ac.jp>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6"
 jupyter = "^1.0"
 matplotlib = "^3.3"
 xarray = "^0.16"
