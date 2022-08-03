@@ -74,3 +74,6 @@ else
     fi
 fi
 
+
+# For safety
+poetry config virtualenvs.create true --local
